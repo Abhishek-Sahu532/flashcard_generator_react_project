@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import {useFormik} from 'formik'
 
 function FlashcardDetails(){
@@ -12,14 +12,23 @@ function FlashcardDetails(){
 
  })
 
- console.log(formik.values)
+//  console.log(formik.values)
 
+const detailsRow = useRef();
 
+    console.log(detailsRow.current);
+function appendRow(){
+    console.log('hello')
+    console.log(detailsRow.current);
+    const childRow = document.createElement('tr')
+    childRow.innerHTML =""
+    detailsRow.current.appendChild(childRow)
+}
 
     
     return(
 <div className="p-3 bg-slate-300  mx-10 my-10">
-    <form action="" onSubmit={formik.onSubmit}>
+    <form action="#" onSubmit={formik.onSubmit}>
 <table className='table-auto'>
     <thead className='text-center'>
     <tr>
@@ -30,10 +39,10 @@ function FlashcardDetails(){
     </tr>
     </thead>
     <tbody>
-        <tr className='mx-7'>
-    <td>1</td>
-        <td > <input className='w-80 rounded mx-12 p-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1' type="text" name='addTerm' id='addTerm' onChange={formik.handleChange} value={formik.values.addTerm} /> </td>
+        <tr className='mx-7' ref={detailsRow}>
+    <td className='bg-red-400 w-1/2 p-2 text-white font-bold rounded-full'>1</td>
 
+        <td > <input className='w-80 rounded mx-12 p-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1' type="text" name='addTerm' id='addTerm' onChange={formik.handleChange} value={formik.values.addTerm} /> </td>
         <td> <input className='w-80 rounded mx-12 p-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1' type="text" name='addDefination' id='addDefination' onChange={formik.handleChange} value={formik.values.addDefination} /></td>
         <td>
             <button> <input type="file" name="imageFile" id="imageFile" className=" w-15 mx-6 w-30 file:mr-4 file:py-2 file:px-4 file:p-4 file:border-0 file:text-sm file:font-semibold file:bg-white file:text-violet-700 hover:file:bg-violet-100 text sm text-slate-300" onChange={formik.handleChange} value={formik.values.imageUpload} /></button>
@@ -43,7 +52,7 @@ function FlashcardDetails(){
 
     </tbody>
 </table>
-<button className="bg-transparent  text-blue-700 font-semibold hover:text-white py-2 px-4 border border-none hover:border-transparent rounded mt-5" name='imageUpload' id='imageUpload'>
+<button className="bg-transparent  text-blue-700 font-semibold hover:text-white py-2 px-4 border border-none hover:border-transparent rounded mt-5" name='imageUpload' id='imageUpload' onClick={appendRow}>
  +Add More
 </button>
 </form>
