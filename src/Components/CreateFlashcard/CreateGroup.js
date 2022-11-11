@@ -2,14 +2,10 @@ import React from "react";
 
 function CreateGroup() {
   return (
-    <div className="p-5 bg-slate-300 mt-6 mx-10 my-10">
+    <div className="p-5 bg-slate-300 mt-1 mx-10 my-10">
       <form>
-        <label
-          className="relative block decoration-gray-300 text-lg font-normal text-slate-700"
-          htmlFor="createGroup"
-        >
-          {" "}
-          Create Group{" "}
+        <label className="relative block decoration-gray-300 text-lg font-normal text-slate-700"
+          htmlFor="createGroup" >  Create Group
           <span className="after:content-['*'] form-label inline-block mb-2 "></span>
         </label>
         <div className="flex items-center space-x-6">
@@ -19,7 +15,8 @@ function CreateGroup() {
             type="text"
             name="createGroup"
             id="createGroup"
-            className="w-64 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1" />
+            className="w-64 mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1"
+          />
           {/* BUTTON TO CHOOSE GROUP AVATAR */}
           <label htmlFor="imageFile"></label>
 

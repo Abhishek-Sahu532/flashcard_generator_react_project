@@ -1,34 +1,23 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import {useFormik} from 'formik'
 
-function FlashcardDetails(){
 
+function FlashcardDetails(){
  const formik = useFormik({
     initialValues: {
         addTerm: '',
         addDefination:'',
         imageUpload:''
     }
-
- })
-
-//  console.log(formik.values)
-
-const detailsRow = useRef();
-
-    console.log(detailsRow.current);
-function appendRow(){
-    console.log('hello')
-    console.log(detailsRow.current);
-    const childRow = document.createElement('tr')
-    childRow.innerHTML =""
-    detailsRow.current.appendChild(childRow)
-}
-
     
+ }) 
+
+ let inputValue = formik.values
+
+
     return(
 <div className="p-3 bg-slate-300  mx-10 my-10">
-    <form action="#" onSubmit={formik.onSubmit}>
+    <form onSubmit={formik.onSubmit}>
 <table className='table-auto'>
     <thead className='text-center'>
     <tr>
@@ -39,7 +28,7 @@ function appendRow(){
     </tr>
     </thead>
     <tbody>
-        <tr className='mx-7' ref={detailsRow}>
+        <tr className='mx-7'>
     <td className='bg-red-400 w-1/2 p-2 text-white font-bold rounded-full'>1</td>
 
         <td > <input className='w-80 rounded mx-12 p-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-50 rounded-md sm:text-sm focus:ring-1' type="text" name='addTerm' id='addTerm' onChange={formik.handleChange} value={formik.values.addTerm} /> </td>
@@ -52,7 +41,7 @@ function appendRow(){
 
     </tbody>
 </table>
-<button className="bg-transparent  text-blue-700 font-semibold hover:text-white py-2 px-4 border border-none hover:border-transparent rounded mt-5" name='imageUpload' id='imageUpload' onClick={appendRow}>
+<button className="bg-transparent  text-blue-700 font-semibold hover:text-white py-2 px-4 border border-none hover:border-transparent rounded mt-5" name='imageUpload' id='imageUpload'>
  +Add More
 </button>
 </form>
