@@ -87,7 +87,7 @@ function MyFlashcard() {
 
             <div className=" last p-2  h-auto  mx-5">
               <div className="btn ">
-                <button class="bg-white flex w-44 mb-4 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
+                <button className="bg-white flex w-44 mb-4 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -106,7 +106,7 @@ function MyFlashcard() {
                 </button>
               </div>
               <div className="btn ">
-                <button class="bg-white flex w-44 mb-4 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
+                <button className="bg-white flex w-44 mb-4 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -125,7 +125,7 @@ function MyFlashcard() {
                 </button>
               </div>
               <div className="btn ">
-                <button class="bg-white flex  w-44 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
+                <button className="bg-white flex  w-44 hover:bg-blue-500 text-blue-400 font-semibold hover:text-white py-2 px-4 border border-blue-200 hover:border-transparent rounded shadow-xl">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -152,31 +152,31 @@ function MyFlashcard() {
         <div className="pagination flex justify-center mt-20  ">
           <div className="pag-item flex  items-baseline shadow-xl cursor-pointer">
             <svg
-              className="mx-4 text-blue-700"
+              className="mx-4 text-blue-700 bi bi-chevron-left"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-chevron-left"
+              
               viewBox="0 0 16 16"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
               />
             </svg>
             <p className="text-blue-700">1/6</p>
             <svg
-              className="mx-4 text-blue-700"
+              className="mx-4 text-blue-700 bi bi-chevron-right"
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-chevron-right"
+              
               viewBox="0 0 16 16"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
               />
             </svg>
