@@ -19,7 +19,7 @@ function App() {
       <Navbar />
 {/* <<<<<<< HEAD */}
     {/* <CreateFlashcard /> */}
-    <MyFlashcard/>
+    {/* <MyFlashcard/> */}
 {/* ======= */}
 <div className='text-lg font-normal ml-10 text-slate-500 pl-8 pr-12'>
   
