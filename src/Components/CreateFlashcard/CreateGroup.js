@@ -1,59 +1,43 @@
 import React from "react";
 import { useFormik } from "formik";
 
-
-
-
 //child1
 
-
 function CreateGroup(props) {
-
-  const initialValues ={
+  const initialValues = {
     createGroup: "",
     imageFile: "",
     groupDescription: "",
-  }
-  
-  const validate = values=>{
-    let error ={};
-    if(!values.createGroup){
-      error.createGroup ='Required'
-    }
-    return error
-  
-  }
-  
-  let onTriggerComponent1 = (values) => {
-    props.parentCallback(values)
-    
   };
- 
-const onSubmit =(values)=>{
-  console.log(values)
 
-}
+  const validate = (values) => {
+    let error = {};
+    if (!values.createGroup) {
+      error.createGroup = "Required";
+    }
+    return error;
+  };
+
+  let onTriggerComponent1 = (values) => {
+    props.parentCallback(formikCreateGroup.values);
+  };
+
+  const onSubmit = (values) => {
+    console.log(values);
+  };
 
   const formikCreateGroup = useFormik({
     initialValues,
     validate,
     onTriggerComponent1,
-    onSubmit
+    onSubmit,
   });
 
-
-
-
-
-
-  
-
-
-  console.log(formikCreateGroup.values);
+  // console.log(formikCreateGroup.values);
 
   return (
     <div className="p-5 bg-slate-300 mt-1 mx-10 my-10">
-      <form className="form-control" onChange={onTriggerComponent1} >
+      <form className="form-control" onChange={onTriggerComponent1}>
         <label
           className="relative block decoration-gray-300 text-lg font-normal text-slate-700"
           htmlFor="createGroup"
@@ -81,7 +65,11 @@ const onSubmit =(values)=>{
           {/* BUTTON TO CHOOSE GROUP AVATAR */}
           <label htmlFor="imageFile"></label>
 
-          <input type="file"   name="imageFile"   id="imageFile"  className="w-30 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-violet-700 hover:file:bg-violet-100 text sm text-slate-300"
+          <input
+            type="file"
+            name="imageFile"
+            id="imageFile"
+            className="w-30 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-white file:text-violet-700 hover:file:bg-violet-100 text sm text-slate-300"
             onChange={formikCreateGroup.handleChange}
             value={formikCreateGroup.values.imageFile}
           />
