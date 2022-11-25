@@ -1,13 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Store } from '../ReduxState/Store/Store';
+
+
 const ShowMyFlashcard= () => {
-  const createGroup = useSelector(state => state.create.addCard.createGroup)
+  const createGroup = useSelector(state => state.create[0].createGroup);
   const groupDescription = useSelector(
-    (state) => state.create.addCard.groupDescription
+    (state) => state.create[0].groupDescription
   );
   console.log(Store.getState())
-  console.log(createGroup)
+  // console.log(createGroup)
   return (
     //  {/* SECTION TO SHOW CREATED ALL CARDS*/}
     <div className="mx-10 my-10 grid grid-cols-3 gap-4 place-content-around flex flex-wrap justify-items-center">
