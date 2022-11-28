@@ -12,18 +12,20 @@ let initialState = [
   },
 ];
 
-// {
-
-//   []
-
-//   addCard: {
-
-//   },
-// };
-
 const CreateReducer = (state = initialState, action) => {
   if (action.type === SET_CART_DATA) {
-    return { ...state, addCard: { ...state.addCard } };
+    return [
+      ...state,
+      {
+        createGroup: action.data.createGroup,
+        imageFile: action.data.imageFile,
+        groupDescription: action.data.groupDescription,
+        key: action.data2,
+        addTerm: action.data2.addTerm,
+        addDefination: action.data2.addDefination,
+        imageUpload: action.data2.imageUpload,
+      },
+    ];
   } else {
     return state;
   }

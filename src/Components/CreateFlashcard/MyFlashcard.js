@@ -39,32 +39,32 @@ function MyFlashcard() {
               
               <ul className="">
                 <li className=" px-4  mb-4 border-b-[2px] border-gray-400 pb-2">
-                  <a className="text-gray-600" href="#">
+                  <a className="text-gray-600" href="/abc">
                     Heading
                   </a>
                 </li>
                 <li className="px-4 mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/abc" className="hover:underline">
                     Card
                   </a>
                 </li>
                 <li className="px-4 mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/abc" className="hover:underline">
                     Card
                   </a>
                 </li>
                 <li className="px-4 mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/abc" className="hover:underline">
                     Card
                   </a>
                 </li>
                 <li className="px-4 mb-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/abc" className="hover:underline">
                     Card
                   </a>
                 </li>
                 <li className="px-4">
-                  <a href="#" className="hover:underline">
+                  <a href="/abc" className="hover:underline">
                     Card
                   </a>
                 </li>

@@ -33,7 +33,7 @@ function FlashcardDetails(props) {
   };
 
   let onTriggerComponent2 = (values) => {
-    props.parentCallback2(formik.values);
+    props.parentCallback(formik.values);
   
   };
 
