@@ -1,13 +1,15 @@
 
 import './App.css';
 // <<<<<<< HEAD
-import CreateFlashcard from './Components/CreateFlashcard/CreateFlashcard';
-import MyFlashcard from './Components/CreateFlashcard/MyFlashcard';
+// import CreateFlashcard from './Components/CreateFlashcard/CreateFlashcard';
+// import MyFlashcard from './Components/CreateFlashcard/MyFlashcard';
 // =======
 // import CreateFlashcard from './Components/CreateFlashcard/CreateFlashcard';
 // import MyFlashcard from './Components/MyFlashcard';
 // >>>>>>> e26f97c698882a3bf5a959fa3986d8d8803c9fe3
+
 import Navbar from './Components/Navbar'
+
 // import ShowMyFlashcard from './Components/ShowMyFlashcard'
 import {Link} from 'react-router-dom'
 import Router1  from './Router/Router1';  

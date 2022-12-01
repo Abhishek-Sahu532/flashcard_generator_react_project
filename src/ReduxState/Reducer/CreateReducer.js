@@ -37,17 +37,17 @@ export default CreateReducer;
 export const saveToLocalStorage =(initialState) =>{
   try {
     const serialisedState = JSON.stringify(initialState);
-    localStorage.setItem("persistantState", serialisedState);
+    localStorage.setItem("cardValue", serialisedState);
   } catch (e) {
     console.warn(e);
   }
 }
 
 // load string from localStarage and convert into an Object
-// invalid output must be undefined
+// invalid output show as undefined
 export const loadFromLocalStorage =() =>{
   try {
-    const serialisedState = localStorage.getItem("persistantState");
+    const serialisedState = localStorage.getItem("cardValue");
     if (serialisedState === null) return undefined;
     return JSON.parse(serialisedState);
   } catch (e) {
