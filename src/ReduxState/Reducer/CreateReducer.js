@@ -1,15 +1,15 @@
 import { SET_CART_DATA } from "../Action/ActionTypes";
 
 let initialState = [
-  {
-    createGroup: "Javascript",
-    imageFile: "",
-    groupDescription: "Js is the best",
-    key: 1,
-    addTerm: "first demo card",
-    addDefination: " first demo defination",
-    imageUpload: "image uploaded",
-  },
+    {
+      createGroup: "Javascript",
+      imageFile: "",
+      groupDescription: "Js is the best",
+      key: 1,
+      addTerm: "first demo card",
+      addDefination: " first demo defination",
+      imageUpload: "image uploaded",
+    },
 ];
 
 const CreateReducer = (state = initialState, action) => {
@@ -43,15 +43,21 @@ export const saveToLocalStorage =(initialState) =>{
   }
 }
 
-// load string from localStarage and convert into an Object
-// invalid output show as undefined
+
 export const loadFromLocalStorage =() =>{
   try {
+
     const serialisedState = localStorage.getItem("cardValue");
-    if (serialisedState === null) return undefined;
-    return JSON.parse(serialisedState);
+    if (serialisedState === null) {
+    
+       return undefined
+    }else{
+       return JSON.parse(serialisedState);
+     
+  } 
+
   } catch (e) {
-    console.warn(e);
+    console.log(e);
     return undefined;
   }
 }
