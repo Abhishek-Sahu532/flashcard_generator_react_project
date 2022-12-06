@@ -10,18 +10,22 @@ import { useState } from "react";
 
 //callback funtion to get data from fist child
 function CreateFlashcard() {
-  let dataFromchild1 = {};
-  let dataFromchild2 = {};
+  // let dataFromchild1 = {};
+  // let dataFromchild2 = {};
+
+  
+  let [data1, setData1] = useState('')
+  let [data2, setData2] = useState('')
 
   let handleCallback = (childData) => {
-    dataFromchild1 = childData;
+    data1 = childData;
   };
 
   //callback function to get data from second child
   let handleCallback2 = (childData) => {
-    dataFromchild2 = childData;
+    data2 = childData;
   };
-
+console.log(data1, data2)
   //for state update
 
   const dispatch = useDispatch();
@@ -30,7 +34,10 @@ function CreateFlashcard() {
     dispatch
   );
   const formSubmit = () => {
-    dispatch(actionCreatores.add_to_cart(dataFromchild1, dataFromchild2));
+    setData1('')
+    setData2('')
+    dispatch(actionCreatores.add_to_cart(data1, data2));
+    
   };
 
   return (
