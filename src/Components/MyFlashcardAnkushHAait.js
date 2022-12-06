@@ -3,7 +3,7 @@ import React from "react";
 function MyFlashcard() {
   return (
     <>
-   <div>
+      <div>
         <div class="container mt-10 mx-auto ">
           <h1 class="text-lg font-bold ml-5">Lorem ipsum</h1>
           <p class="px-2">
