@@ -146,6 +146,7 @@ const CreateFlashCard = () => {
                                   type="text"
                                   name={`cards.${index}.cardname`}
                                   innerRef={editRef}
+                                  className="border-slate-400 md:w-64 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400"
                                 />{" "}
                                 <span className="absolute left-[5.8rem] -top-[15px] md:top-0 text-lg font-medium">
                                   {" "}
@@ -159,10 +160,11 @@ const CreateFlashCard = () => {
                               </div>
                               <div className="relative flex flex-col justify-center space-y-3">
                                 <h2>Enter Defination</h2>
+                                
                                 <Field
                                   as="textarea"
                                   name={`cards.${index}.carddescription`}
-                                  className="resize-none lg:w-72"
+                                  className="resize-none lg:w-72 border-slate-400 md:w-96 md:w-64 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400 "
                                 />{" "}
                                 <span className="absolute left-[8.5rem] -top-[1rem] text-lg font-medium">
                                   *
@@ -237,6 +239,8 @@ const CreateFlashCard = () => {
                           </div>
                         ))
                       : null}
+
+
                     <button
                       type="button"
                       onClick={() =>
@@ -245,7 +249,7 @@ const CreateFlashCard = () => {
                           cardid: nanoid(),
                           cardname: "",
                           carddescription: "",
-                          cardimg: null
+                          cardimg: null,
                         })
                       }
                       className="flex items-center space-x-2 text-blue-600 font-medium text-sm bg-white w-full mb-5 px-5 py-2"
