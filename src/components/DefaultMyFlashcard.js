@@ -39,7 +39,7 @@ const DefaultMyFlashcard = ({flashcard}) => {
           {flashcard.groupdescription}
         </p>
         <p className="font-medium text-sm text-slate-700">
-          {flashcard.cards ? flashcard.card.length : 0}Cards{" "}
+          {/* {flashcard.cards ? flashcard.card.length : 0}Cards{" "} */}
         </p>
         <button
           onClick={() => {

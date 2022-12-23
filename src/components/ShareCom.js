@@ -15,6 +15,8 @@ import {
   WhatsappShareButton
 } from "react-share";
 
+
+
 const ShareCom = ({isOpen, closeModal}) => {
 
 const LINK = `https://www/almabetter.com/abcdefght`;
@@ -31,8 +33,21 @@ const [isLinkCopied, setIsLinkCopied] = useState(false);
     return (
       <>
         <Modal open={isOpen} onClickBackdrop={closeModal} dataTheme={"light"}>
-          <Button> ✕ </Button>
+          <Button size="sm"
+        shape="circle"
+        className="absolute right-2 top-2 bg-white border-none text-slate-700 text-2xl font-bold"
+        onClick={() => {
+          setIsLinkCopied(false);
+          closeModal();
+        }}> ✕ </Button>
+
+
+
+
           <Modal.Header className="font-bold">Share</Modal.Header>
+
+
+
 
           <Modal.Body>
             <div className="m-5 flex flex-col">
