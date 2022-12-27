@@ -1,0 +1,1 @@
+export * as actionCreatores from '../Action/SetData'
