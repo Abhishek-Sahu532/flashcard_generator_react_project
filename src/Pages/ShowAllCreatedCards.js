@@ -5,12 +5,19 @@ import { IoDownloadOutline, IoPrintOutline } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import demoImgCard from '../Images/demoCardImg.jpg'
 import ShareCom from "../components/ShareCom";
+<<<<<<< HEAD
 import {forwardRef} from 'react'
 import PrintComp from "../components/PrintComp"
 
 
 
 const ShowAllCreatedCards = forwardRef((props, ref) => {
+=======
+
+
+
+const ShowAllCreatedCards = () => {
+>>>>>>> 7c39f9b5602423986777ead6794dbe50509426d5
   const { groupId } = useParams();
   const navigate = useNavigate();
 
@@ -80,7 +87,11 @@ const ShowAllCreatedCards = forwardRef((props, ref) => {
               ))}
           </aside>
           {/*middle part */}
+<<<<<<< HEAD
           <section ref={ref} className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg">
+=======
+          <section className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg">
+>>>>>>> 7c39f9b5602423986777ead6794dbe50509426d5
             <img
               src={demoImgCard}
               alt="cardimage"
@@ -98,15 +109,26 @@ const ShowAllCreatedCards = forwardRef((props, ref) => {
               <IoDownloadOutline />
               <span className="hidden xl:block">Download</span>
             </button>
+<<<<<<< HEAD
             
               <PrintComp />
               
            
+=======
+            <button className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+              <IoPrintOutline />
+              <span className="hidden xl:block">Print</span>
+            </button>
+>>>>>>> 7c39f9b5602423986777ead6794dbe50509426d5
           </aside>
         </main>
       </section>
     </>
   );
+<<<<<<< HEAD
 });
+=======
+};
+>>>>>>> 7c39f9b5602423986777ead6794dbe50509426d5
 
 export default ShowAllCreatedCards;
