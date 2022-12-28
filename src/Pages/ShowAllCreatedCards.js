@@ -5,10 +5,12 @@ import { IoDownloadOutline, IoPrintOutline } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import demoImgCard from '../Images/demoCardImg.jpg'
 import ShareCom from "../components/ShareCom";
-
+import PrintCom from "../components/PrintCom";
 
 
 const ShowAllCreatedCards = () => {
+
+
   const { groupId } = useParams();
   const navigate = useNavigate();
 
@@ -96,10 +98,11 @@ const ShowAllCreatedCards = () => {
               <IoDownloadOutline />
               <span className="hidden xl:block">Download</span>
             </button>
-            <button className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
-              <IoPrintOutline />
-              <span className="hidden xl:block">Print</span>
-            </button>
+      
+            <div className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+            <IoPrintOutline />
+              <PrintCom />
+            </div>
           </aside>
         </main>
       </section>
