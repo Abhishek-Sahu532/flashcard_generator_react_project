@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { IoDownloadOutline, IoPrintOutline } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import demoImgCard from '../Images/demoCardImg.jpg'
 import ShareCom from "../components/ShareCom";
-import PrintCom from "../components/PrintCom";
+
+
+ import ReactToPrint from "react-to-print";
+
+
+
+const handlePrint = () => {
+  window.print();
+};
 
 
 const ShowAllCreatedCards = () => {
 
-
+  const componentRef = useRef();
   const { groupId } = useParams();
   const navigate = useNavigate();
 
@@ -80,7 +88,10 @@ const ShowAllCreatedCards = () => {
               ))}
           </aside>
           {/*middle part */}
-          <section className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg">
+          <section
+            ref={componentRef}
+            className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg"
+          >
             <img
               src={demoImgCard}
               alt="cardimage"
@@ -91,17 +102,29 @@ const ShowAllCreatedCards = () => {
           {/*right part */}
           <aside className="col-span-1 hidden md:flex flex-col items-center space-y-5">
             <div className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
-            <ShareCom />
+              <ShareCom />
             </div>
 
-            <button className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
-              <IoDownloadOutline />
-              <span className="hidden xl:block">Download</span>
-            </button>
-      
             <div className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
-            <IoPrintOutline />
-              <PrintCom />
+              <button className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+                <IoDownloadOutline />
+                <span className="hidden xl:block">Download</span>
+              </button>
+            </div>
+
+            <div className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+              <ReactToPrint
+                trigger={() => (
+                  <button
+                    onClick={handlePrint}
+                    className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105"
+                  >
+                    <IoPrintOutline />
+                    <span className="hidden xl:block">Print</span>
+                  </button>
+                )}
+                content={() => componentRef.current}
+              />
             </div>
           </aside>
         </main>

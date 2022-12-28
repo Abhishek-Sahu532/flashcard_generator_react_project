@@ -7,6 +7,10 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
 
+
+
+
+
 const CreateFlashCard = () => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
