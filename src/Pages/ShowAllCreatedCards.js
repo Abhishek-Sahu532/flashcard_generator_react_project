@@ -58,9 +58,15 @@ const ShowAllCreatedCards = () => {
             onClick={() => navigate(-1)}
           />
           <div className="flex flex-col">
+<<<<<<< HEAD
             <h1 className="text-xl text-black font-bold">
               {ourCard.groupname}
             </h1>
+=======
+            <h2 className="text-xl text-black font-bold">
+              {ourCard.groupname}
+            </h2>
+>>>>>>> 4127cf4ce401f16cf944712026d07a3e4b5370dd
             {ourCard.groupdescription && (
               <p className=" my-2">{ourCard.groupdescription}</p>
             )}
@@ -68,8 +74,13 @@ const ShowAllCreatedCards = () => {
         </header>
 
         <main className="grid grid-rows-1 md:grid-cols-4 mt-6">
+<<<<<<< HEAD
           <aside className="col-span-1 bg-white w-[60vw] md:w-[10rem] xl:w-[17rem] m-5 px-1 py-2 h-fit rounded-md " >
             <h3 className="p-3">Flashcards</h3>
+=======
+          <aside className="col-span-1 bg-white w-[60vw] md:w-[10rem] xl:w-[17rem] m-5 px-1 py-2 h-fit rounded-md">
+            <h1 className="p-3">Flashcards</h1>
+>>>>>>> 4127cf4ce401f16cf944712026d07a3e4b5370dd
             <hr />
             <hr className="mb-2" />
             {ourCard.cards &&

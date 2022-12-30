@@ -20,7 +20,10 @@
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-share": "^4.4.1",
+<<<<<<< HEAD
     "react-switch": "^7.0.0",
+=======
+>>>>>>> 4127cf4ce401f16cf944712026d07a3e4b5370dd
     "react-to-print": "^2.14.10",
     "reactjs-popup": "^2.0.5",
     "redux": "^4.2.0",
