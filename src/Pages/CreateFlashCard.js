@@ -7,6 +7,10 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
 
+
+
+
+
 const CreateFlashCard = () => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
@@ -44,12 +48,12 @@ const CreateFlashCard = () => {
       onSubmit={addFlashCard}
     >
       {({ values, isSubmitting, setFieldValue }) => (
-        <Form className="w-full space-y-5 text-slate-600 font-medium">
+        <Form className="form w-full space-y-5 text-slate-600 font-medium">
           {/* upper */}
-          <div className="flex flex-col px-10 py-4 bg-white drop-shadow-lg space-y-4 rounded-md">
+          <div  className="flex flex-col px-10 py-4 bg-white drop-shadow-lg space-y-4 rounded-md">
             {/* LEFT */}
             <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
-              <div className="flex flex-col relative">
+              <div className="g-name, flex flex-col relative">
                 <h2>Create Group</h2>
                 <Field
                   type="text"

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
-import DefaultImg from '../Images/demoImg_undraw.svg'
+import DefaultImg from "../Images/defaultImageForGrp.jpg";
 
 //default flash card to show when no cards added in the store
 const DefaultMyFlashcard = ({flashcard}) => {

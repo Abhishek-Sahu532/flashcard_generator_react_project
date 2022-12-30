@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DefaultMyFlashcard from "../components/DefaultMyFlashcard";
-
+import DemoPic from '../Images/mycardsPageDemo.svg'
 const MyCards = () => {
   
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const MyCards = () => {
             <div className="flex flex-wrap">
               {flashcard.slice(0, showCardLimit).map(({ card }, index) => (
                 <DefaultMyFlashcard key={index} flashcard={card} />
-        ))}
+              ))}
             </div>
             <div className="flex justify-end mr-10">
               <button
@@ -35,9 +35,19 @@ const MyCards = () => {
           </div>
         ) : (
           <div className="flex items-center justify-center bg-white shadow-lg p-30">
+            <div className="flex items-center justify-center bg-white shadow-lg p-30">
+              <img
+                src={DemoPic}
+                alt=""
+                className="object-fill h-72 w-96 md:object-scale-down "
+              />
+            </div>
             <h1 className="text-xl text-slate-600">
               Nothing to show, Go to{" "}
-              <span className="text-blue-500 cursor-pointer" onClick={()=> navigate('/')}> 
+              <span
+                className="text-blue-500 cursor-pointer"
+                onClick={() => navigate("/")}
+              >
                 Create Flashcard
               </span>
               to Create New
