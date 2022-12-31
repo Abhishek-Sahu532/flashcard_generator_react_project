@@ -2,3 +2,30 @@
     font-size: 16px;
     color: red;
 }
+
+#light {
+    background-color:  #f8f4ef;
+    color: black;
+}
+#dark {
+    background-color: black;
+    
+}
+
+#light .main {
+    background-color:  #f8f4ef;
+}
+#light hr {
+    color:  black;
+}
+
+#dark h1 {
+    color: #f8f4ef;
+}
+#dark  {
+    color: #f8f4ef;
+}
+#theme{
+    text-align: right;
+    margin: 20px;
+}

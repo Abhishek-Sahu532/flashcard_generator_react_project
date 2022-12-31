@@ -48,12 +48,21 @@ const CreateFlashCard = () => {
       onSubmit={addFlashCard}
     >
       {({ values, isSubmitting, setFieldValue }) => (
+<<<<<<< HEAD
+        <Form className="form w-full space-y-5 text-slate-600 font-medium">
+          {/* upper */}
+          <div  className="flex flex-col px-10 py-4 bg-white drop-shadow-lg space-y-4 rounded-md">
+            {/* LEFT */}
+            <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
+              <div className="g-name, flex flex-col relative">
+=======
         <Form className="w-full space-y-5 text-slate-600 font-medium">
           {/* upper */}
           <div className="flex flex-col px-10 py-4 bg-white drop-shadow-lg space-y-4 rounded-md">
             {/* LEFT */}
             <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
               <div className="flex flex-col relative">
+>>>>>>> 4127cf4ce401f16cf944712026d07a3e4b5370dd
                 <h2>Create Group</h2>
                 <Field
                   type="text"
