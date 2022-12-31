@@ -16,7 +16,7 @@ const MyCards = () => {
 
   return (
     <>
-      <section className="flex flex-col mt-16">
+      <section className="flex flex-col">
         {flashcard.length > 0 ? (
           <div>
             <div className="flex flex-wrap">
