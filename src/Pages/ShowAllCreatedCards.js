@@ -5,19 +5,14 @@ import { IoDownloadOutline, IoPrintOutline } from "react-icons/io5";
 import { BiArrowBack } from "react-icons/bi";
 import demoImgCard from '../Images/demoCardImg.jpg'
 import ShareCom from "../components/ShareCom";
+import ReactToPrint from "react-to-print";
 
-
- import ReactToPrint from "react-to-print";
-
-
+import {BiLeftArrow, BiRightArrow} from 'react-icons/bi'
 
 const handlePrint = () => {
   window.print();
 };
-
-
 const ShowAllCreatedCards = () => {
-
   const componentRef = useRef();
   const { groupId } = useParams();
   const navigate = useNavigate();
@@ -86,11 +81,25 @@ const ShowAllCreatedCards = () => {
                   {card.cardname}
                 </p>
               ))}
+
+<div className="carousel_control">
+
+<button type="button" className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+<BiLeftArrow />
+</button>
+
+
+<button type="button" className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+ <BiRightArrow />
+</button>
+</div>
           </aside>
+
+         
           {/*middle part */}
           <section
             ref={componentRef}
-            className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg"
+            className="col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-white shadow-lg rounded-lg md:flex-col"
           >
             <img
               src={demoImgCard}
