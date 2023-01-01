@@ -17,7 +17,7 @@ const CreateFlashCard = () => {
   const filePickerForCard = useRef(null);
   const editRef = useRef(null);
   const [groupImg, setGroupImg] = useState("");
-  const [cardImg, setCardImg] = useState("");
+  const [cardImg, setCardImg] = useState({});
 
   const addFlashCard = (values, actions) => {
     dispatch(setFlashCard(values));
@@ -183,9 +183,9 @@ const CreateFlashCard = () => {
                               <div className="flex items-center space-x-2">
                                 {/* BUTTON TO SELECT THE IMAGE FOR CARDS */}
 
-                                {cardImg ? (
+                                {cardImg && cardImg[index] ? (
                                   <img
-                                    src={cardImg}
+                                    src={cardImg[index]}
                                     alt="cardImg"
                                     className="w-28 h-28 object-contain"
                                   />
@@ -193,7 +193,7 @@ const CreateFlashCard = () => {
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      filePickerForCard.current.click();
+                                      filePickerForCard?.current?.click();
                                     }}
                                     name={`cards.${index}.cardimg`}
                                     className={`hidden lg:flex lg:items-center lg:w-[19rem] px-2 py-2 bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 } `}
@@ -204,7 +204,7 @@ const CreateFlashCard = () => {
                                       type="file"
                                       name={`cards.${index}.cardimg`}
                                       ref={filePickerForCard}
-                                      value={cardImg}
+                                      value={cardImg[index]}
                                       onChange={(e) => {
                                         const file1 = e.target.files[0];
                                         const readerForCardImg =
@@ -216,7 +216,7 @@ const CreateFlashCard = () => {
                                             "cardimg",
                                             readerForCardImg.result
                                           );
-                                          setCardImg(readerForCardImg.result);
+                                          setCardImg((prev) => ({...prev, [index]: readerForCardImg.result}));
                                         };
                                       }}
                                       hidden
