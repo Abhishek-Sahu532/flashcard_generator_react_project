@@ -30,7 +30,7 @@ const customStyles = {
   },
 };
 
-const ShareCom = () => {
+const ShareCom = ({theme}) => {
   const LINK = `https://www/almabetter.com/abcdefght`;
   const [isLinkCopied, setIsLinkCopied] = useState(false);
 
@@ -58,7 +58,7 @@ const ShareCom = () => {
     <>
       <button
         type="button"
-        className="flex items-center py-3 px-4 xl:w-60 space-x-5 bg-white rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105"
+        className={`flex items-center py-3 px-4 xl:w-60 space-x-5  rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105 bg-${theme==='dark'?'dark':'white'} text-${theme==='dark'?'white':'slate-600'} border-2`}
         onClick={openModal}
       >
         <RiArrowGoBackLine />

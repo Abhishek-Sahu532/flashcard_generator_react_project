@@ -23,7 +23,7 @@ function App() {
     <ThemeContext.Provider value={{theme, setTheme}}>
 
 
-    <div id = {theme} className="w-full bg-[#f8f4ef] font-Montserrat flex items-center space-x-10 mb-3">
+    <div id={theme} className={`w-full bg-white font-Montserrat flex items-center space-x-10 mb-3`}>
     
     <div className=''>
     <ReactSwitch onChange={changeTheme} checked={theme === "dark"} />
@@ -32,11 +32,11 @@ function App() {
     <div className='px-5 xl:px-32 container mx-auto'>
     <Homepage />
     <Routes>
-    <Route path='/' element={<CreateFlashCard />} />
-    <Route path='/myflashcard' element={<MyCards />} />
-    <Route path='/showallcreatedcards/:groupId' element={<ShowAllCreatedCards />} />
+    <Route path='/' element={<CreateFlashCard  theme={theme}/>} />
+    <Route path='/myflashcard' element={<MyCards theme={theme} />} />
+    <Route path='/showallcreatedcards/:groupId' element={<ShowAllCreatedCards theme={theme}/>} />
     </Routes>
-    
+  
     </div>
    </div>
    </ThemeContext.Provider>
@@ -44,3 +44,5 @@ function App() {
 }
 
 export default App;
+
+

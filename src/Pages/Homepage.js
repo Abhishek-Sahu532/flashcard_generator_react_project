@@ -1,13 +1,17 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const Homepage = () => {
+const Homepage = ({mode,toggleMode}) => {
   return (
     <>
-      <div className="w-full pt-2">
+      <div className={`w-full pt-2 bg-${mode}`}  >
         <h1 className=" text-xl text-black font-semibold mb-5">
           Create Flashcard
         </h1>
+
+
+
+
         <div className="flex items-center space-x-10 mb-3">
           <button className="text-sm font-semibold text-red-600">
             <NavLink

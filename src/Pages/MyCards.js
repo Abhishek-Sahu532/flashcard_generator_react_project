@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import DefaultMyFlashcard from "../components/DefaultMyFlashcard";
+import DefaultMyFlashcard from "../Components/DefaultMyFlashcard";
 import DemoPic from '../Images/mycardsPageDemo.svg'
-const MyCards = () => {
+const MyCards = ({theme}) => {
   
   const navigate = useNavigate();
   const flashcard = useSelector((state) => state.flashcard.flashcards);
@@ -21,7 +21,7 @@ const MyCards = () => {
           <div>
             <div className="flex flex-wrap">
               {flashcard.slice(0, showCardLimit).map(({ card }, index) => (
-                <DefaultMyFlashcard key={index} flashcard={card} />
+                <DefaultMyFlashcard key={index} flashcard={card} theme={theme}/>
               ))}
             </div>
             <div className="flex justify-end mr-10">

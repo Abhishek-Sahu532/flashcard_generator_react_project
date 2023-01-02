@@ -1,17 +1,17 @@
 import React, { useState, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-import Schema from "../components/InputSchema/Schema";
+import Schema from "../Components/InputSchema/Schema";
 import { nanoid } from "nanoid";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
+import '../App.css';
 
 
 
 
-
-const CreateFlashCard = () => {
+const CreateFlashCard = ({theme}) => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
@@ -48,17 +48,18 @@ const CreateFlashCard = () => {
       onSubmit={addFlashCard}
     >
       {({ values, isSubmitting, setFieldValue }) => (
-        <Form className="w-full space-y-5 text-slate-600 font-medium">
+        <Form className={`w-full space-y-5 text-${theme==='dark'?'white':'slate-600'} font-medium `} >
           {/* upper */}
-          <div className="flex flex-col px-10 py-4 bg-white drop-shadow-lg space-y-4 rounded-md">
+          <div className={`flex flex-col px-10 py-4 bg-${theme==='dark'?'dark':'white'} shadow-sm shadow-white space-y-4 rounded-md border-2 `}>
             {/* LEFT */}
             <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
               <div className="flex flex-col relative">
                 <h2>Create Group</h2>
+                
                 <Field
                   type="text"
                   name="groupname"
-                  className="border-slate-400 md:w-96 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400"
+                  className={`border-slate-400 md:w-96 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400 `}
                 />
                 <span className="absolute left-[7rem] text-lg font-medium">
                   *
@@ -136,14 +137,14 @@ const CreateFlashCard = () => {
                     {cards && cards.length > 0
                       ? cards.map((card, index) => (
                           <div
-                            className="flex items-center space-x-10 bg-white px-5 lg:px-10 py-4"
+                            className={`flex items-center space-x-10 border-2 bg-${theme==='dark'?'dark':'white'} px-5 lg:px-10 py-4 text-${theme==='dark'?'white':'slate-600'}`}
                             key={index}
                           >
                             <div className="p-2 w-10 h-10 flex items-center justify-center bg-red-600 text-white text-md font-semibold rounded-full">
                               {index + 1}
                             </div>
 
-                            <div className='className="flex flex-col space-y-3 md:space-x-10 md:flex-row"'>
+                            <div className='className="flex flex-col space-y-3  md:space-x-10 md:flex-row"'>
                               <div className="relative flex flex-col justify-center space-y-3">
                                 <h2>Enter Term</h2>
                                 <Field
