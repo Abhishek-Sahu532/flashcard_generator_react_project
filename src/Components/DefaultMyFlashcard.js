@@ -8,11 +8,7 @@ const DefaultMyFlashcard = ({flashcard}) => {
   // const flashcard = useSelector((state) => state.flashcard.flashcards);
   //  console.log(flashcard)
   const navigate = useNavigate();
-  console.log(flashcard)
-
   return (
-   
-   
       <div
         key={flashcard.groupid}
         className="p-4 m-5 mx-auto flex flex-col space-y-3 items-center justify-center bg-white rounded-md text-black w-[23rem] h-[13rem] relative border-2 border-slate-200"

@@ -3,17 +3,16 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DefaultMyFlashcard from "../Components/DefaultMyFlashcard";
 import DemoPic from '../Images/mycardsPageDemo.svg'
+
+
+
+
 const MyCards = ({theme}) => {
-  
   const navigate = useNavigate();
   const flashcard = useSelector((state) => state.flashcard.flashcards);
-// console.log(flashcard)
   const [showAll, setShowAll] = useState(false);
-
   //condition to show cards according to the state
-
   const showCardLimit = !showAll ? 6 : flashcard.length;
-
   return (
     <>
       <section className="flex flex-col">

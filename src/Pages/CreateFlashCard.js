@@ -6,12 +6,9 @@ import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
-import '../App.css';
+import "../App.css";
 
-
-
-
-const CreateFlashCard = ({theme}) => {
+const CreateFlashCard = ({ theme }) => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
@@ -23,7 +20,8 @@ const CreateFlashCard = ({theme}) => {
     dispatch(setFlashCard(values));
     actions.resetForm();
     setGroupImg("");
-    setCardImg('')
+    setCardImg("");
+    console.log(values)
   };
 
   return (
@@ -48,14 +46,22 @@ const CreateFlashCard = ({theme}) => {
       onSubmit={addFlashCard}
     >
       {({ values, isSubmitting, setFieldValue }) => (
-        <Form className={`w-full space-y-5 text-${theme==='dark'?'white':'slate-600'} font-medium `} >
+        <Form
+          className={`w-full space-y-5 text-${
+            theme === "dark" ? "white" : "slate-600"
+          } font-medium `}
+        >
           {/* upper */}
-          <div className={`flex flex-col px-10 py-4 bg-${theme==='dark'?'dark':'white'} shadow-sm shadow-white space-y-4 rounded-md border-2 `}>
+          <div
+            className={`flex flex-col px-10 py-4 bg-${
+              theme === "dark" ? "dark" : "white"
+            } shadow-sm shadow-white space-y-4 rounded-md border-2 `}
+          >
             {/* LEFT */}
             <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
               <div className="flex flex-col relative">
                 <h2>Create Group</h2>
-                
+
                 <Field
                   type="text"
                   name="groupname"
@@ -137,7 +143,11 @@ const CreateFlashCard = ({theme}) => {
                     {cards && cards.length > 0
                       ? cards.map((card, index) => (
                           <div
-                            className={`flex items-center space-x-10 border-2 bg-${theme==='dark'?'dark':'white'} px-5 lg:px-10 py-4 text-${theme==='dark'?'white':'slate-600'}`}
+                            className={`flex items-center space-x-10 border-2 bg-${
+                              theme === "dark" ? "dark" : "white"
+                            } px-5 lg:px-10 py-4 text-${
+                              theme === "dark" ? "white" : "slate-600"
+                            }`}
                             key={index}
                           >
                             <div className="p-2 w-10 h-10 flex items-center justify-center bg-red-600 text-white text-md font-semibold rounded-full">
@@ -152,9 +162,8 @@ const CreateFlashCard = ({theme}) => {
                                   name={`cards.${index}.cardname`}
                                   innerRef={editRef}
                                   className="border-slate-400 md:w-64 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400"
-                                />{" "}
+                                />
                                 <span className="absolute left-[5.8rem] -top-[15px] md:top-0 text-lg font-medium">
-                                  {" "}
                                   *{" "}
                                 </span>
                                 <ErrorMessage
@@ -165,12 +174,12 @@ const CreateFlashCard = ({theme}) => {
                               </div>
                               <div className="relative flex flex-col justify-center space-y-3">
                                 <h2>Enter Defination</h2>
-                                
+
                                 <Field
                                   as="textarea"
                                   name={`cards.${index}.carddescription`}
                                   className="resize-none lg:w-72 border-slate-400 md:w-96 md:w-64 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400 "
-                                />{" "}
+                                />
                                 <span className="absolute left-[8.5rem] -top-[1rem] text-lg font-medium">
                                   *
                                 </span>
@@ -217,7 +226,10 @@ const CreateFlashCard = ({theme}) => {
                                             "cardimg",
                                             readerForCardImg.result
                                           );
-                                          setCardImg((prev) => ({...prev, [index]: readerForCardImg.result}));
+                                          setCardImg((prev) => ({
+                                            ...prev,
+                                            [index]: readerForCardImg.result,
+                                          }));
                                         };
                                       }}
                                       hidden
@@ -244,7 +256,6 @@ const CreateFlashCard = ({theme}) => {
                           </div>
                         ))
                       : null}
-
 
                     <button
                       type="button"
