@@ -1,0 +1,36 @@
+.erros{
+    font-size: 16px;
+    color: red;
+}
+
+#light {
+    background-color:  #f8f4ef;
+    color: black;
+}
+#dark {
+<<<<<<< HEAD
+    background-color: rgb(39, 39, 39);  
+=======
+    background-color: rgb(39, 39, 39);
+    
+>>>>>>> 63dc8a14595a2604afba4d838797cce63da859ee
+}
+
+#light .main {
+    background-color:  #f8f4ef;
+}
+
+#dark h1 {
+    color: #f8f4ef;
+}
+#dark  {
+    color: #f8f4ef;
+}
+<<<<<<< HEAD
+
+=======
+#theme{
+    text-align: right;
+   
+}
+>>>>>>> 63dc8a14595a2604afba4d838797cce63da859ee
