@@ -33,7 +33,7 @@ const MyCards = ({theme}) => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center bg-white shadow-lg p-30">
+          <div className={`flex items-center justify-center bg-${theme==='dark'?'dark':'white'} shadow-lg p-10 border-2`} style={{marginBottom:'219px'}} >
             <div className="flex items-center justify-center bg-white shadow-lg p-30">
               <img
                 src={DemoPic}
@@ -41,10 +41,10 @@ const MyCards = ({theme}) => {
                 className="object-fill h-72 w-96 md:object-scale-down "
               />
             </div>
-            <h1 className="text-xl text-slate-600">
+            <h1 className={`text-xl text-${theme==='dark'?'white':'slate-500'} pl-3`}>
               Nothing to show, Go to{" "}
               <span
-                className="text-blue-500 cursor-pointer"
+                className="text-blue-500 cursor-pointer pr-3"
                 onClick={() => navigate("/")}
               >
                 Create Flashcard

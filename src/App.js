@@ -23,13 +23,13 @@ function App() {
     <ThemeContext.Provider value={{theme, setTheme}}>
 
 
-    <div id={theme} className={`w-full bg-white font-Montserrat flex items-center space-x-10 mb-3`}>
+    <div id={theme} className={`w-full bg-white font-Montserrat flex items-center space-x-10`}>
     
     <div className=''>
     <ReactSwitch onChange={changeTheme} checked={theme === "dark"} />
     </div>
 
-    <div className='px-5 xl:px-32 container mx-auto'>
+    <div className='h-full px-5 xl:px-32 container mx-auto'>
     <Homepage />
     <Routes>
     <Route path='/' element={<CreateFlashCard  theme={theme}/>} />
