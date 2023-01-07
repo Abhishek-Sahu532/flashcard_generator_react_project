@@ -15,17 +15,10 @@
 #light .main {
     background-color:  #f8f4ef;
 }
-#light hr {
-    color:  black;
-}
 
 #dark h1 {
     color: #f8f4ef;
 }
 #dark  {
     color: #f8f4ef;
-}
-#theme{
-    text-align: right;
-   
 }

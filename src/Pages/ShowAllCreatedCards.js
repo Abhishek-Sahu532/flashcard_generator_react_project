@@ -138,6 +138,7 @@ const ShowAllCreatedCards = ({ theme }) => {
                 } text-${
                   theme === "dark" ? "white" : "slate-600"
                 } rounded-md shadow-lg active:scale-100  transition-all duration-100 hover:scale-105 border-2`}
+                onClick ={handlePrint}
               >
                 <IoDownloadOutline />
                 <span className="hidden xl:block">Download</span>
