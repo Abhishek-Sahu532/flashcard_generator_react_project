@@ -1,70 +1,30 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<details>
+ <summary> Project Title -  **Flashcard Generator**</summary>
 
-## Available Scripts
+It has mainly three pages.
 
-In the project directory, you can run:
+•	Create Flashcard Page
 
-### `npm start`
+•	My Flashcard Page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+•	Flashcard Details Page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create Flashcard Page –
 
-### `npm test`
+It is the project’s first page, which will be used to create a particular flashcard. It contains two forms. The first form has three fields and is used to create a group. One input field to add the group’s name, a text area field to add the description about the group, and a button to add an image to the group. 
+The second form mainly has three fields. One input field is to add the Term for the card, the second input field is to add the definition of the particular card, and the third is to select the image for the particular card. Selecting the image will generate the two icons aside from the image in the same row. The trash icon to delete a particular card or row and the Edit icon to modify the particular card. It will focus on the Term input field after clicking.  
+We have a “+Add more” button to create more cards. With every click, it will add the same group of inputs.
+Then you can create a flashcard using the “Create” button.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My Flashcard Page –
 
-### `npm run build`
+The second page is to display all the created cards. By default, it will display the link to the home page if any cards are not created. After clicking the ‘view cards’, the User will be redirected to the flashcard details page.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Flashcard Details Page -
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+On this page, the user can see all the cards by clicking on the menu on the left side of the display and the result will be shown in the middle of the display. On the right side, the user can use the buttons i.e. Share, Download, Print to share the cards, and download the cards. By clicking the share button a modal popup comes up in the middle of the screen where the user can copy the link and save it in the clipboard. Users can share the card on the same modal through social media apps like Facebook, WhatsApp etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Additionally, we have added the toggle button to choose the mode from light to dark or dark to light.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</details>
