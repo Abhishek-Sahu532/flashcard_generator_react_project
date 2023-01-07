@@ -16,8 +16,7 @@ cards :Yup.array().of(Yup.object().shape({
     .required('Required'),
     carddescription : Yup.string() 
     .max(320, "Must be less than 320 characters")
-    .required('Required'),
-    cardimg: Yup.mixed(),
+    .required('Required')
 })),
 createdOn:Yup.date().default(()=> new Date())
 
