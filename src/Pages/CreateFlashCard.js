@@ -52,18 +52,16 @@ const CreateFlashCard = ({theme}) => {
           {/* upper */}
           <div className={`flex flex-col px-10 py-4 bg-${theme==='dark'?'dark':'white'} shadow-sm shadow-white space-y-4 rounded-md border-2 `}>
             {/* LEFT */}
-            <div className="flex flex-col sm:flex-row items-center space-x-10 pt-3">
+            <div className="flex flex-col sm:flex-row  lg:space-x-10 pt-3">
               <div className="flex flex-col relative">
                 <h2>Create Group<sup className="font-medium text-xl text-red-700 ">*</sup></h2>
                 
                 <Field
                   type="text"
                   name="groupname"
-                  className={`border-slate-400 md:w-96 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400 `}
+                  className={`border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-sm `}
                 />
-                {/* <span className="absolute left-[7rem] text-lg font-medium">
-                  *
-                </span> */}
+            
                 <ErrorMessage
                   component={"div"}
                   className=" text-sm text-red-600"
@@ -84,7 +82,7 @@ const CreateFlashCard = ({theme}) => {
                   onClick={() => {
                     filePicker.current.click();
                   }}
-                  className={`flex items-center px-5 py-2 mt-6 bg-white border-2 border-slate-300 active:border-blue-600 text-blue-700 font-semibold rounded-md space-x-2`}
+                  className={`px-5 py-2 mt-6 item-center bg-white border-2 border-slate-300 active:border-blue-600 text-blue-700 font-semibold rounded-md space-x-2 `}
                 >
                   <UploadOutlined /> <span>Upload Image</span>
                   <input
@@ -113,9 +111,9 @@ const CreateFlashCard = ({theme}) => {
               <Field
                 as="textarea"
                 name="groupdescription"
-                rows={3}
+                rows={3}  
                 placeholder="Describe the roles, responsibilities, skills required for the job and help candidate understand the role better"
-                className="resize-none border-slate-300 border-2 rounded-sm placeholder:opacity-40 focus:ring-slate-400 focus:border focus:border-slate-400"
+                className="resize-none  border-slate-400 h-16 rounded-md focus:h-24 p-2 lg:w-auto md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
               />
               <ErrorMessage
                 component={"div"}
@@ -140,7 +138,7 @@ const CreateFlashCard = ({theme}) => {
                             className={`flex items-center space-x-10 border-2 bg-${theme==='dark'?'dark':'white'} px-5 lg:px-10 py-4 text-${theme==='dark'?'white':'slate-600'} md:flex md:space-x-10 md:items-center relative flex-wrap`}
                             key={index}
                           >
-                            <div className="px-2 rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold rounded-full">
+                            <div className=" rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold">
                               {index + 1}
                             </div>
 
@@ -151,7 +149,7 @@ const CreateFlashCard = ({theme}) => {
                                   type="text"
                                   name={`cards.${index}.cardname`}
                                   innerRef={editRef}
-                                  className="border-slate-400 md:w-64 border-2 rounded-sm focus:fing-slate-400 focus:border focus:border-slate-400 h-12 rounded-md p-2 lg:w-72 bg-gray-50 border  text-gray-900 text-sm "
+                                  className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-xl"
                                 />{" "}
                               
                                 <ErrorMessage
@@ -166,7 +164,7 @@ const CreateFlashCard = ({theme}) => {
                                 <Field
                                   as="textarea"
                                   name={`cards.${index}.carddescription`}
-                                  className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 resize-none transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
+                                  className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
                                 />{" "}
                                 {/* <span className="absolute left-[8.5rem] -top-[1rem] text-lg font-medium">
                                   *
@@ -185,7 +183,7 @@ const CreateFlashCard = ({theme}) => {
                                   <img
                                     src={cardImg[index]}
                                     alt="cardImg"
-                                    className="w-28 h-28 object-contain"
+                                    className="w-28 h-28 object-contain" //to default size after uploading
                                   />
                                 ) : (
                                   <button
@@ -194,7 +192,7 @@ const CreateFlashCard = ({theme}) => {
                                       filePickerForCard?.current?.click();
                                     }}
                                     name={`cards.${index}.cardimg`}
-                                    className={`hidden lg:flex lg:items-center lg:w-[16rem] px-2 py-2 bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 }`}
+                                    className={` px-2 py-2 bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-32 `}
                                   >
                                     <PlusOutlined />
                                     <span>Select Image</span>
