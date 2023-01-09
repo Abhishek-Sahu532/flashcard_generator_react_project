@@ -22,6 +22,7 @@
     "react-share": "^4.4.1",
     "react-switch": "^7.0.0",
     "react-to-print": "^2.14.10",
+    "react-toastify": "^9.1.1",
     "reactjs-popup": "^2.0.5",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
