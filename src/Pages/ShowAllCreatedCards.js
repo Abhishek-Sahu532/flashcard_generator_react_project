@@ -18,6 +18,7 @@ const ShowAllCreatedCards = ({ theme }) => {
 
   //will receive the data from the store
   const cards = useSelector((state) => state.flashcard.flashcards);
+  console.log(cards)
   const [ourCard, setOurCard] = useState({});
   const [displayCard, setDisplayCard] = useState({});
 
