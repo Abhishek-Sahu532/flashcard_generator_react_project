@@ -6,7 +6,7 @@ import { BiArrowBack } from "react-icons/bi";
 import demoImgCard from "../Images/demoCardImg.jpg";
 import ShareCom from "../Components/ShareCom";
 import ReactToPrint from "react-to-print";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+// import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 const handlePrint = () => {
   window.print();
@@ -66,11 +66,11 @@ const ShowAllCreatedCards = ({ theme }) => {
             )}
           </div>
         </header>
-        <main className="grid grid-rows-1 md:grid-cols-4 mt-6 mb-10">
+        <main className="grid grid-rows-1  md:grid-cols-4 mt-6 mb-10">
           <aside
             className={`col-span-1 bg-${
               theme === "dark" ? "dark" : "white"
-            }  w-[60vw] md:w-[10rem] xl:w-[17rem] mr-5 px-1 py-2 h-fit rounded-md border-2`}
+            }  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5  `}
           >
             <h1 className="p-3">Flashcards</h1>
             <hr />
@@ -80,7 +80,7 @@ const ShowAllCreatedCards = ({ theme }) => {
               ourCard.cards.map((card) => (
                 <p
                   key={card.cardid}
-                  className={`py-2 px-8 text-slate-700 bg-${
+                  className={`py-3 px-3 text-slate-700 bg-${
                     theme === "dark" ? "slate-600" : "white"
                   }  font-medium hover:bg-slate-100 cursor-pointer ${
                     card.cardid === displayCard.cardid &&
@@ -98,7 +98,7 @@ const ShowAllCreatedCards = ({ theme }) => {
           {/*middle part */}
           <section
             ref={componentRef}
-            className={`col-span-3 md:col-span-2 flex flex-col xl:flex-row items-center w-full bg-${
+            className={`col-span-3 md:col-span-2 md:m-1 flex flex-col xl:flex-row sm:my-5 items-center w-full bg-${
               theme === "dark" ? "dark" : "white"
             }  shadow-lg rounded-lg md:flex-col border-2`}
           >
@@ -125,40 +125,37 @@ const ShowAllCreatedCards = ({ theme }) => {
             </p>
           </section>
           {/*right part */}
-          <aside className="col-span-1 hidden md:flex flex-col items-center space-y-5">
+          <aside className="col-span-1 md:flex flex-col items-center ">
             <div
-              className={`flex items-center py-3 px-4 xl:w-60 space-x-5  rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105`}
+              className={`flex items-center   w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105 mt-2 `}
             >
-              <ShareCom theme={theme} />
+              <ShareCom  />
             </div>
 
-            <div className="flex items-center py-3 px-4 xl:w-60 space-x-5  rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+            <div className={`flex items-center  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105  mt-2`}>
               <button
-                className={`flex items-center py-3 px-4 xl:w-60 space-x-5 bg-${
-                  theme === "dark" ? "dark" : "white"
-                } text-${
+                className={`flex items-center py-3 px-4 xl:w-60 space-x-5  text-${
                   theme === "dark" ? "white" : "slate-600"
-                } rounded-md shadow-lg active:scale-100  transition-all duration-100 hover:scale-105 border-2`}
+                } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
                 onClick ={handlePrint}
               >
                 <IoDownloadOutline />
-                <span className="hidden xl:block">Download</span>
+                <span className="md:hidden xl:block">Download</span>
               </button>
             </div>
-            <div className="flex items-center py-3 px-4 xl:w-60 space-x-5  rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105">
+            <div className={`flex items-center  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105 mt-2 `}>
               <ReactToPrint
                 trigger={() => (
                   <button
                     onClick={handlePrint}
                     className={`flex items-center py-3 px-4 xl:w-60 space-x-5 bg-${
                       theme === "dark" ? "dark" : "white"
-                    }
-                    text-${
+                    } text-${
                       theme === "dark" ? "white" : "slate-600"
-                    } rounded-md shadow-lg active:scale-100 transition-all duration-100 hover:scale-105 border-2`}
+                    } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
                   >
                     <IoPrintOutline />
-                    <span className="hidden xl:block">Print</span>
+                    <span className="md:hidden xl:block  ">Print</span>
                   </button>
                 )}
                 content={() => componentRef.current}
