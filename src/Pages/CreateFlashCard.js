@@ -220,14 +220,14 @@ const CreateFlashCard = ({ theme }) => {
                                     onClick={() => {
                                       filePickerForCard?.current?.click();
                                     }}
-                                    name={`cards.${index}.cardimg`}
+                                    name={`cards[${index}].cardimg`}
                                     className={` px-1 py-1  bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-auto sm:w-72  `}
                                   >
                                     <PlusOutlined />
                                     <span>Select Image</span>
                                     <input
                                       type="file"
-                                      name={`cards.${index}.cardimg`}
+                                      name={`cards[${index}].cardimg`}
                                       ref={filePickerForCard}
                                       value={cardImg[index]}
                                       onChange={(e) => {
@@ -237,14 +237,14 @@ const CreateFlashCard = ({ theme }) => {
                                         readerForCardImg.readAsDataURL(file1);
 
                                         readerForCardImg.onload = () => {
-                                          setFieldValue(
-                                            "cardimg",
+                                          setFieldValue(`cards[${index}].cardimg`,
                                             readerForCardImg.result
-                                          );
+                                            )
                                           setCardImg((prev) => ({
                                             ...prev,
                                             [index]: readerForCardImg.result,
-                                          }));
+                                          }))
+
                                         };
                                       }}
                                       hidden

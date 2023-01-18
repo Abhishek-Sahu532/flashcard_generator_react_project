@@ -102,11 +102,12 @@ const ShowAllCreatedCards = ({ theme }) => {
               theme === "dark" ? "dark" : "white"
             }  shadow-lg rounded-lg md:flex-col border-2`}
           >
-            {ourCard.cardimg ? (
+
+            {displayCard.cardimg ? (
               <img
                 className="object-contain w-[32rem] xl:w-[20vw] h-full p-6"
-                src={ourCard.cardimg}
-                alt={ourCard.cardimg}
+                src={displayCard.cardimg}
+                alt={displayCard.cardimg}
               />
             ) : (
               <img
