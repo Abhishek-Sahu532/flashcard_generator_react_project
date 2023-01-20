@@ -4,19 +4,12 @@ import Schema from "../Components/InputSchema/Schema";
 import { nanoid } from "nanoid";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
-import {
-  FaTrash,
-  FaEdit,
-  FaRegFileImage,
-  FaBackspace,
-  FaRegTimesCircle,
-} from "react-icons/fa";
+import { FaRegTimesCircle, FaTrash, FaEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
 import "../App.css";
 
 const CreateFlashCard = ({ theme }) => {
-  const reader = new FileReader(); //defining file reader for converting images
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
@@ -72,6 +65,28 @@ const CreateFlashCard = ({ theme }) => {
                   Create Group
                   <sup className="font-medium text-xl text-red-700 ">*</sup>
                 </h2>
+                {values.groupimg ? (
+                  <div className="flex items-center space-x-3  my-5">
+                    <div className="w-full min-w-[100px] min-h-[100px] bg-gray-200 max-w-[100px] max-h-[100px]  overflow-hidden  flex rounded-full shadow-md hover:ring-2 hover:-translate-y-1 transition-all ease-in-out duration-300 hover:ring-slate-500 hover:shadow-2xl">
+                      <img
+                        className="object-cover"
+                        src={values.groupimg}
+                        alt=""
+                      />
+                    </div>
+                    {/* deleting the selected groupicon image  */}
+                    <label
+                      onClick={() => {
+                        setFieldValue(`groupimg`, "");
+                        setGroupImg("");
+                      }}
+                    >
+                      <FaTrash color="#7F8487" size={"1.5rem"} />
+                    </label>
+                  </div>
+                ) : (
+                  ""
+                )}
 
                 <Field
                   type="text"
@@ -88,11 +103,7 @@ const CreateFlashCard = ({ theme }) => {
               {/* right */}
 
               {groupImg ? (
-                <img
-                  src={groupImg}
-                  alt="groupImg"
-                  className="w-28 h-28 object-contain"
-                />
+                ""
               ) : (
                 <button
                   type="button"
@@ -154,9 +165,9 @@ const CreateFlashCard = ({ theme }) => {
                           <div
                             className={`flex items-center space-x-10 border-2 bg-${
                               theme === "dark" ? "dark" : "white"
-                            } px-5 lg:px-10 py-4 text-${
+                            } px-5 lg:px-10 py-1 text-${
                               theme === "dark" ? "white" : "slate-600"
-                            } md:flex md:space-x-10 md:items-center relative flex-wrap`}
+                            } md:flex md:space-x-10 md:items-center relative flex-nowrap`}
                             key={index}
                           >
                             <div className=" rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold">
@@ -174,7 +185,8 @@ const CreateFlashCard = ({ theme }) => {
                                 <Field
                                   type="text"
                                   name={`cards.${index}.cardname`}
-                                  innerRef={editRef} autoFocus
+                                  innerRef={editRef}
+                                  autoFocus
                                   className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-xl"
                                 />{" "}
                                 <ErrorMessage
@@ -195,9 +207,6 @@ const CreateFlashCard = ({ theme }) => {
                                   name={`cards.${index}.carddescription`}
                                   className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
                                 />{" "}
-                                {/* <span className="absolute left-[8.5rem] -top-[1rem] text-lg font-medium">
-                                  *
-                                </span> */}
                                 <ErrorMessage
                                   component={"div"}
                                   className="text-sm text-red-500"
@@ -209,11 +218,7 @@ const CreateFlashCard = ({ theme }) => {
                                 {/* BUTTON TO SELECT THE IMAGE FOR CARDS */}
 
                                 {cardImg && cardImg[index] ? (
-                                  <img
-                                    src={cardImg[index]}
-                                    alt="cardImg"
-                                    className="w-28 h-28 object-contain" //to default size after uploading
-                                  />
+                                  ""
                                 ) : (
                                   <button
                                     type="button"
@@ -225,6 +230,76 @@ const CreateFlashCard = ({ theme }) => {
                                   >
                                     <PlusOutlined />
                                     <span>Select Image</span>
+                                  </button>
+                                )}
+                                {cardImg && cardImg[index] ? (
+                                  <div className="md:flex  space-x-4 space-y-4 my-5">
+                                    <div className="w-full relative  min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
+                                      <FaRegTimesCircle
+                                        className="absolute top-0 right-0"
+                                        onClick={() => {
+                                          setFieldValue(
+                                            `cards.${index}.cardimg`,
+                                            ""
+                                          );
+                                          setCardImg("");
+                                        }}
+                                        color="#7F8487"
+                                        size={"1.2rem"}
+                                      />
+                                      <label>
+                                        <img
+                                          src={values.cards[index].cardimg}
+                                          alt=""
+                                        />
+                                      </label>
+                                    </div>
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
+
+                                <input
+                                  type="file"
+                                  name={`cards[${index}].cardimg`}
+                                  ref={filePickerForCard}
+                                  value=""
+                                  onChange={(e) => {
+                                    const readerForCardImg = new FileReader();
+
+                                    readerForCardImg.readAsDataURL(
+                                      e.target.files[0]
+                                    );
+
+                                    readerForCardImg.onload = () => {
+                                      setFieldValue(
+                                        `cards.${index}.cardimg`,
+                                        readerForCardImg.result
+                                      );
+                                      setCardImg((prev) => ({
+                                        ...prev,
+                                        [index]: readerForCardImg.result,
+                                      }));
+                                    };
+                                  }}
+                                  hidden
+                                />
+
+                                {/* {cardImg && cardImg[index] ? (
+                                ''
+                              ) :  (
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      filePickerForCard?.current?.click();
+                                    }}
+                                    name={`cards[${index}].cardimg`}
+                                    className={` px-1 py-1  bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-auto sm:w-72  `}
+                                  >
+                                    <PlusOutlined />
+                                    <span>Select Image</span>
+
+
                                     <input
                                       type="file"
                                       name={`cards[${index}].cardimg`}
@@ -237,7 +312,7 @@ const CreateFlashCard = ({ theme }) => {
                                         readerForCardImg.readAsDataURL(file1);
 
                                         readerForCardImg.onload = () => {
-                                          setFieldValue(`cards[${index}].cardimg`,
+                                          setFieldValue(`cards.${index}.cardimg`,
                                             readerForCardImg.result
                                             )
                                           setCardImg((prev) => ({
@@ -249,45 +324,11 @@ const CreateFlashCard = ({ theme }) => {
                                       }}
                                       hidden
                                     />
+                                    
                                   </button>
+                                  
                                 )}
-
-                                {/* second option */}
-                                {/* {card.cardimg ? (
-                                  <div className="md:flex  space-x-4 space-y-4 my-5">
-                                    <div className="w-full relative  min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-4 overflow-hidden  flex">
-                                      <FaRegTimesCircle
-                                        className="absolute top-0 right-0"
-                                        onClick={() =>
-                                          setFieldValue(
-                                            `cards.${index}.cardimg`,
-                                            ""
-                                          )
-                                        }
-                                        color="#7F8487"
-                                        size={"1.2rem"}
-                                      />
-
-                                      <label htmlFor={card.id}>
-                                        <img src={cards.image} alt="" />
-                                      </label>
-                                    </div>
-                                  </div>
-                                ) : (
-                                  ""
-                                )} */}
-
-                                {/* validating and converting image obj into url  */}
-                                {/* <input type="file" id="card.id"  name={`cards.${index}.cardimg`} onChange={(e)=>{
-                                        if(e.target.files[0].size <= 1024 * 1024){
-                                          reader.readAsDataURL(e.target.files[0]);
-                                          reader.onload = () => {
-                                            setFieldValue(`card.${index}.image`, reader.result)
-                                        }
-                                        }
-                                       }} /> */}
-
-                                {/* second option end */}
+                                   */}
 
                                 <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
                                   <button
