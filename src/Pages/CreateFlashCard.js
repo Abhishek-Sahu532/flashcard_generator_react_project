@@ -13,10 +13,17 @@ const CreateFlashCard = ({ theme }) => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
-  const editRef = useRef([]);
-  editRef.current = [];
+  const inputRef = useRef([]);
+  inputRef.current = [];
   const [groupImg, setGroupImg] = useState("");
-  const [cardImg, setCardImg] = useState({});
+  const [cardImg, setCardImg] = useState([]);
+
+const addRef = (item)=>{
+  if(item && !inputRef.current.includes(item)){
+    inputRef.current.push(item)
+  }
+}
+
 
   const addFlashCard = (values, actions) => {
     dispatch(setFlashCard(values));
@@ -25,6 +32,8 @@ const CreateFlashCard = ({ theme }) => {
     setCardImg("");
   };
 
+
+ 
   return (
     //default value of the form input, will after being change as per user input
     <Formik
@@ -46,7 +55,7 @@ const CreateFlashCard = ({ theme }) => {
       validationSchema={Schema}
       onSubmit={addFlashCard}
     >
-      {({ values, isSubmitting, setFieldValue, index }) => (
+      {({ values, isSubmitting, setFieldValue }) => (
         <Form
           className={`w-full space-y-5 text-${
             theme === "dark" ? "white" : "slate-600"
@@ -164,9 +173,9 @@ const CreateFlashCard = ({ theme }) => {
                       ? cards.map((card, index) => (
                           <div
                             className={`flex items-center space-x-10 border-2 bg-${
-                              theme === "dark" ? "dark" : "white"
+                              theme === "dark" ? "white" : "dark"
                             } px-5 lg:px-10 py-1 text-${
-                              theme === "dark" ? "white" : "slate-600"
+                              theme === "dark" ? "white" : "black"
                             } md:flex md:space-x-10 md:items-center relative flex-nowrap`}
                             key={index}
                           >
@@ -185,7 +194,7 @@ const CreateFlashCard = ({ theme }) => {
                                 <Field
                                   type="text"
                                   name={`cards.${index}.cardname`}
-                                  innerRef={editRef}
+                                  innerRef={addRef}
                                   autoFocus
                                   className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-xl"
                                 />{" "}
@@ -242,8 +251,8 @@ const CreateFlashCard = ({ theme }) => {
                                             `cards.${index}.cardimg`,
                                             ""
                                           );
-                                          setCardImg("");
-                                        }}
+                                          setCardImg()
+                                        }}  
                                         color="#7F8487"
                                         size={"1.2rem"}
                                       />
@@ -254,6 +263,7 @@ const CreateFlashCard = ({ theme }) => {
                                         />
                                       </label>
                                     </div>
+                                  
                                   </div>
                                 ) : (
                                   ""
@@ -266,22 +276,18 @@ const CreateFlashCard = ({ theme }) => {
                                   value=""
                                   onChange={(e) => {
                                     const readerForCardImg = new FileReader();
-
                                     readerForCardImg.readAsDataURL(
                                       e.target.files[0]
                                     );
-
                                     readerForCardImg.onload = () => {
                                       setFieldValue(
                                         `cards.${index}.cardimg`,
                                         readerForCardImg.result
                                       );
-                                      setCardImg((prev) => ({
-                                        ...prev,
-                                        [index]: readerForCardImg.result,
-                                      }));
+                                      setCardImg((prev) => ([...prev, readerForCardImg.result]));
                                     };
                                   }}
+                               
                                   hidden
                                 />
 
@@ -341,9 +347,7 @@ const CreateFlashCard = ({ theme }) => {
                                   </button>
                                   <button
                                     type="button"
-                                    onClick={() => {
-                                      editRef.current[index].focus();
-                                    }}
+                                    onClick={() => {inputRef.current[index].focus()}}
                                   >
                                     <PencilAltIcon className="h-6 text-blue-600" />
                                   </button>
