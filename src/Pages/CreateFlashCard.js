@@ -150,7 +150,7 @@ const addRef = (item)=>{
                 name="groupdescription"
                 rows={3}
                 placeholder="Describe the roles, responsibilities, skills required for the job and help candidate understand the role better"
-                className="resize-none  border-slate-400 h-16 rounded-md focus:h-24 p-2 lg:w-auto md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
+                className="resize-none  border-slate-400 h-16 rounsded-md focus:h-24 p-2 lg:w-auto md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
               />
               <ErrorMessage
                 component={"div"}
@@ -227,36 +227,10 @@ const addRef = (item)=>{
                                 {/* BUTTON TO SELECT THE IMAGE FOR CARDS */}
 
                                 {cardImg && cardImg[index] ? (
-                                  ""
-                                ) : (
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      filePickerForCard?.current?.click();
-                                    }}
-                                    name={`cards[${index}].cardimg`}
-                                    className={` px-1 py-1  bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-auto sm:w-72  `}
-                                  >
-                                    <PlusOutlined />
-                                    <span>Select Image</span>
-                                  </button>
-                                )}
-                                {cardImg && cardImg[index] ? (
-                                  <div className="md:flex  space-x-4 space-y-4 my-5">
+                                  <div className="md:flex  space-x-4 space-y-4 my-6 ">
                                     <div className="w-full relative  min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
-                                      <FaRegTimesCircle
-                                        className="absolute top-0 right-0"
-                                        onClick={() => {
-                                          setFieldValue(
-                                            `cards.${index}.cardimg`,
-                                            ""
-                                          );
-                                          setCardImg()
-                                        }}  
-                                        color="#7F8487"
-                                        size={"1.2rem"}
-                                      />
-                                      <label>
+                                    
+                                      <label className="mt-10">
                                         <img
                                           src={values.cards[index].cardimg}
                                           alt=""
@@ -269,29 +243,7 @@ const addRef = (item)=>{
                                   ""
                                 )}
 
-                                <input
-                                  type="file"
-                                  name={`cards[${index}].cardimg`}
-                                  ref={filePickerForCard}
-                                  value=""
-                                  onChange={(e) => {
-                                    const readerForCardImg = new FileReader();
-                                    readerForCardImg.readAsDataURL(
-                                      e.target.files[0]
-                                    );
-                                    readerForCardImg.onload = () => {
-                                      setFieldValue(
-                                        `cards.${index}.cardimg`,
-                                        readerForCardImg.result
-                                      );
-                                      setCardImg((prev) => ([...prev, readerForCardImg.result]));
-                                    };
-                                  }}
-                               
-                                  hidden
-                                />
-
-                                {/* {cardImg && cardImg[index] ? (
+                                {cardImg && cardImg[index] ? (
                                 ''
                               ) :  (
                                   <button
@@ -334,7 +286,7 @@ const addRef = (item)=>{
                                   </button>
                                   
                                 )}
-                                   */}
+                                  
 
                                 <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
                                   <button
