@@ -7,6 +7,7 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
 import { FaRegTimesCircle, FaTrash, FaEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
+import {toast} from 'react-toastify'
 import "../App.css";
 
 const CreateFlashCard = ({ theme }) => {
@@ -30,8 +31,14 @@ const addRef = (item)=>{
     actions.resetForm();
     setGroupImg("");
     setCardImg("");
+    toast.success("Flashcard created successfully")
   };
 
+  const handleImage = (index) => {
+    const values = Object.values(cardImg)
+    const filter =  values.splice(index, 1)
+    if(index > 0) setCardImg(values)
+  }
 
  
   return (
@@ -173,9 +180,9 @@ const addRef = (item)=>{
                       ? cards.map((card, index) => (
                           <div
                             className={`flex items-center space-x-10 border-2 bg-${
-                              theme === "dark" ? "white" : "dark"
+                              theme === "dark" ? "dark" : "white"
                             } px-5 lg:px-10 py-1 text-${
-                              theme === "dark" ? "white" : "black"
+                              theme === "dark" ? "dark" : "slate-600"
                             } md:flex md:space-x-10 md:items-center relative flex-nowrap`}
                             key={index}
                           >
@@ -206,7 +213,7 @@ const addRef = (item)=>{
                               </div>
                               <div className="relative flex flex-col justify-center space-y-4 align-middle">
                                 <h2>
-                                  Enter Defination
+                                  Enter Definition
                                   <sup className="font-medium text-xl text-red-700">
                                     *
                                   </sup>
@@ -228,12 +235,13 @@ const addRef = (item)=>{
 
                                 {cardImg && cardImg[index] ? (
                                   <div className="md:flex  space-x-4 space-y-4 my-6 ">
-                                    <div className="w-full relative  min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
+                                    <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
                                     
                                       <label className="mt-10">
                                         <img
                                           src={values.cards[index].cardimg}
                                           alt=""
+                                          className="w-28 h-28 object-contain"
                                         />
                                       </label>
                                     </div>
@@ -291,8 +299,10 @@ const addRef = (item)=>{
                                 <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
                                   <button
                                     type="button"
-                                    onClick={() =>
-                                      index > 0 ? arrayHelper.remove(index) : ""
+                                    onClick={() => {
+                                     if(index > 0) arrayHelper.remove(index); 
+                                      handleImage(index)
+                                    }
                                     }
                                   >
                                     <TrashIcon className="h-6 text-slate-500" />

@@ -7,6 +7,8 @@ import ShowAllCreatedCards from './Pages/ShowAllCreatedCards';
 import Homepage from './Pages/Homepage';
 import {Routes, Route} from 'react-router-dom'
 import { createContext, useState } from 'react'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // dark mode
@@ -18,7 +20,7 @@ function App() {
     theme === "dark" ? setTheme("light") : setTheme("dark")
   };
   return (
-
+    
     <ThemeContext.Provider value={{theme, setTheme , changeTheme}}>
     <div id={theme} className={`w-full bg-white font-Montserrat flex items-center space-x-10 mb-3`}>
     <div className='px-5 xl:px-32 container mx-auto'>
@@ -29,6 +31,7 @@ function App() {
     <Route path='/showallcreatedcards/:groupId' element={<ShowAllCreatedCards theme={theme}/>} />
     </Routes>
     </div>
+    <ToastContainer/>
    </div>
    </ThemeContext.Provider>
   );
