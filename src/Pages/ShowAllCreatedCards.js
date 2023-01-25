@@ -80,8 +80,10 @@ const ShowAllCreatedCards = ({ theme }) => {
               ourCard.cards.map((card) => (
                 <p
                   key={card.cardid}
-                  className={`py-3 px-3 word-break: break-all  text-slate-700 bg-${
-                    theme === "dark" ? "slate-600" : "white"
+                  className={`py-3 px-3 word-break: break-all  text-${
+                    theme === "dark" ? "white" : "slate-600"
+                  }  bg-${
+                    theme === "dark" ? "dark" : "white"
                   }  font-medium hover:bg-slate-100 cursor-pointer ${
                     card.cardid === displayCard.cardid &&
                     "!text-red-500 !font-bold"
@@ -130,14 +132,14 @@ const ShowAllCreatedCards = ({ theme }) => {
             <div
               className={`flex items-center   w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105 mt-2 `}
             >
-              <ShareCom  />
+              <ShareCom  theme= {theme}/>
             </div>
 
             <div className={`flex items-center  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105  mt-2`}>
               <button
                 className={`flex items-center py-3 px-4 xl:w-60 space-x-5  text-${
                   theme === "dark" ? "white" : "slate-600"
-                } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
+                } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none bg-${theme === "dark" ? "dark" : "white"}`}
                 onClick ={handlePrint}
               >
                 <IoDownloadOutline />
@@ -149,11 +151,7 @@ const ShowAllCreatedCards = ({ theme }) => {
                 trigger={() => (
                   <button
                     onClick={handlePrint}
-                    className={`flex items-center py-3 px-4 xl:w-60 space-x-5 bg-${
-                      theme === "dark" ? "dark" : "white"
-                    } text-${
-                      theme === "dark" ? "white" : "slate-600"
-                    } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
+                    className={`flex items-center py-3 px-4 xl:w-60 space-x-5 bg-${theme === "dark" ? "dark" : "white"} text-${theme === "dark" ? "white" : "slate-600"} rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
                   >
                     <IoPrintOutline />
                     <span className="md:hidden xl:block  ">Print</span>

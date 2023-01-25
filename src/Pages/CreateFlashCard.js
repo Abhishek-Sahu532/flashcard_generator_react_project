@@ -168,7 +168,7 @@ const addRef = (item)=>{
           </div>
 
           {/* Add Cards Section  */}
-          <div className="text-black drop-shadow-lg rounded-lg bg-white p-5 rounded-md mt-4  overflow-hidden ">
+          <div className={`text-black drop-shadow-lg rounded-lg bg-${theme=== "dark"?'dark':'white'} border-2 p-5 rounded-md mt-4  overflow-hidden`} >
             {/* FieldArray component from Formik which will create Dynamic Form for the custom input */}
 
             <FieldArray name="cards">
@@ -179,11 +179,7 @@ const addRef = (item)=>{
                     {cards && cards.length > 0
                       ? cards.map((card, index) => (
                           <div
-                            className={`flex items-center space-x-10 border-2 bg-${
-                              theme === "dark" ? "dark" : "white"
-                            } px-5 lg:px-10 py-1 text-${
-                              theme === "dark" ? "dark" : "slate-600"
-                            } md:flex md:space-x-10 md:items-center relative flex-nowrap`}
+                            className={`flex items-center space-x-10 border-2  px-5 lg:px-10 py-1 md:flex md:space-x-10 md:items-center relative flex-nowrap mb-2`}
                             key={index}
                           >
                             <div className=" rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold">
@@ -191,7 +187,7 @@ const addRef = (item)=>{
                             </div>
 
                             <div className="flex  flex-col md:space-x-9 md:flex-row ">
-                              <div className="relative flex flex-col  space-y-3 align-middle justify-center">
+                              <div className={`text-${theme === "dark"?"white":"black"} relative flex flex-col space-y-3 align-middle justify-center`}>
                                 <h2>
                                   Enter Term{" "}
                                   <sup className="font-medium text-xl text-red-700">
@@ -211,7 +207,7 @@ const addRef = (item)=>{
                                   name={`cards.${index}.cardname`}
                                 />
                               </div>
-                              <div className="relative flex flex-col justify-center space-y-4 align-middle">
+                              <div className={`text-${theme === "dark"?"white":"black"} relative flex flex-col justify-center space-y-4 align-middle`}>
                                 <h2>
                                   Enter Definition
                                   <sup className="font-medium text-xl text-red-700">
@@ -326,7 +322,7 @@ const addRef = (item)=>{
                           cardimg: null,
                         })
                       }
-                      className="flex items-center space-x-2 text-blue-600 font-medium text-sm bg-white w-full mb-5 px-5 py-2"
+                      className={`flex items-center space-x-2 text-blue-600 font-medium text-sm bg-${theme === "dark"?"dark":"white"} mb-5 px-5 py-2 w-30`}
                     >
                       <PlusOutlined />
                       <span>Add More</span>
