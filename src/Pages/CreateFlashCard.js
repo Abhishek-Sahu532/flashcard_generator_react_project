@@ -237,7 +237,7 @@ const addRef = (item)=>{
                                   <div className="md:flex  space-x-4 space-y-4 my-6 ">
                                     <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
                                     
-                                      <label className="mt-10">
+                                      <label className="mt-5">
                                         <img
                                           src={values.cards[index].cardimg}
                                           alt=""
@@ -273,10 +273,8 @@ const addRef = (item)=>{
                                       value={cardImg[index]}
                                       onChange={(e) => {
                                         const file1 = e.target.files[0];
-                                        const readerForCardImg =
-                                          new FileReader();
+                                        const readerForCardImg = new FileReader();
                                         readerForCardImg.readAsDataURL(file1);
-
                                         readerForCardImg.onload = () => {
                                           setFieldValue(`cards.${index}.cardimg`,
                                             readerForCardImg.result
@@ -285,14 +283,11 @@ const addRef = (item)=>{
                                             ...prev,
                                             [index]: readerForCardImg.result,
                                           }))
-
                                         };
                                       }}
                                       hidden
                                     />
-                                    
                                   </button>
-                                  
                                 )}
                                   
 

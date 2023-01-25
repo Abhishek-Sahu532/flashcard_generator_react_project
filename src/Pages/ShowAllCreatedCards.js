@@ -18,7 +18,7 @@ const ShowAllCreatedCards = ({ theme }) => {
 
   //will receive the data from the store
   const cards = useSelector((state) => state.flashcard.flashcards);
-  console.log(cards)
+  // console.log(cards)
   const [ourCard, setOurCard] = useState({});
   const [displayCard, setDisplayCard] = useState({});
 
@@ -57,7 +57,7 @@ const ShowAllCreatedCards = ({ theme }) => {
             </h2>
             {ourCard.groupdescription && (
               <p
-                className={` my-2 text-${
+                className={`word-break: break-all my-2  text-${
                   theme === "dark" ? "white" : "bg-slate-600"
                 } `}
               >
@@ -80,7 +80,7 @@ const ShowAllCreatedCards = ({ theme }) => {
               ourCard.cards.map((card) => (
                 <p
                   key={card.cardid}
-                  className={`py-3 px-3 text-slate-700 bg-${
+                  className={`py-3 px-3 word-break: break-all  text-slate-700 bg-${
                     theme === "dark" ? "slate-600" : "white"
                   }  font-medium hover:bg-slate-100 cursor-pointer ${
                     card.cardid === displayCard.cardid &&
@@ -118,7 +118,7 @@ const ShowAllCreatedCards = ({ theme }) => {
             )}
 
             <p
-              className={`w-full p-6 py-10 text-${
+              className={`w-full p-6 py-10 	word-break: break-all text-${
                 theme === "dark" ? "white" : "slate-600"
               }`}
             >
