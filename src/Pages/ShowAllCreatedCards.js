@@ -49,17 +49,15 @@ const ShowAllCreatedCards = ({ theme }) => {
           />
           <div className="flex flex-col">
             <h2
-              className={`text-xl text-${
-                theme === "dark" ? "white" : "bg-slate-600"
-              } font-bold`}
+              className={`text-xl text-${theme === "dark" ? "white" : "bg-slate-600"
+                } font-bold`}
             >
               {ourCard.groupname}
             </h2>
             {ourCard.groupdescription && (
               <p
-                className={`word-break: break-all my-2  text-${
-                  theme === "dark" ? "white" : "bg-slate-600"
-                } `}
+                className={`word-break: break-all my-2  text-${theme === "dark" ? "white" : "bg-slate-600"
+                  } `}
               >
                 {ourCard.groupdescription}
               </p>
@@ -68,9 +66,8 @@ const ShowAllCreatedCards = ({ theme }) => {
         </header>
         <main className="grid grid-rows-1  md:grid-cols-4 mt-6 mb-10">
           <aside
-            className={`col-span-1 bg-${
-              theme === "dark" ? "dark" : "white"
-            }  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5  `}
+            className={`col-span-1 bg-${theme === "dark" ? "dark" : "white"
+              }  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5  `}
           >
             <h1 className="p-3">Flashcards</h1>
             <hr />
@@ -80,14 +77,11 @@ const ShowAllCreatedCards = ({ theme }) => {
               ourCard.cards.map((card) => (
                 <p
                   key={card.cardid}
-                  className={`py-3 px-3 word-break: break-all  text-${
-                    theme === "dark" ? "white" : "slate-600"
-                  }  bg-${
-                    theme === "dark" ? "dark" : "white"
-                  }  font-medium hover:bg-slate-100 cursor-pointer ${
-                    card.cardid === displayCard.cardid &&
+                  className={`py-3 px-3 word-break: break-all  text-${theme === "dark" ? "white" : "slate-600"
+                    }  bg-${theme === "dark" ? "dark" : "white"
+                    }  font-medium hover:bg-slate-100 cursor-pointer ${card.cardid === displayCard.cardid &&
                     "!text-red-500 !font-bold"
-                  }`}
+                    }`}
                   onClick={() => showCard(card.cardid)}
                 >
                   {" "}
@@ -97,12 +91,11 @@ const ShowAllCreatedCards = ({ theme }) => {
             <div className="carousel_control">
             </div>
           </aside>
-          {/*middle part */}
+          {/*CARD IMAGE & CARD DESCRIPTION SECTION */}
           <section
             ref={componentRef}
-            className={`col-span-3 md:col-span-2 md:m-1 flex flex-col xl:flex-row sm:my-5 items-center w-full bg-${
-              theme === "dark" ? "dark" : "white"
-            }  shadow-lg rounded-lg md:flex-col border-2`}
+            className={`col-span-3 md:col-span-2 md:m-1 flex flex-col xl:flex-row sm:my-5 items-center w-full bg-${theme === "dark" ? "dark" : "white"
+              }  shadow-lg rounded-lg md:flex-col border-2`}
           >
 
             {displayCard.cardimg ? (
@@ -118,48 +111,39 @@ const ShowAllCreatedCards = ({ theme }) => {
                 className="object-contain w-[32rem] xl:w-[20vw] h-full p-6"
               />
             )}
-
             <p
-              className={`w-full p-6 py-10 	word-break: break-all text-${
-                theme === "dark" ? "white" : "slate-600"
-              }`}
+              className={`w-full p-6 py-10 	word-break: break-all text-${theme === "dark" ? "white" : "slate-600"
+                }`}
             >
               {displayCard.carddescription}{" "}
             </p>
           </section>
-          {/*right part */}
+          {/*BUTTONS PART- SHARE, DOWNLOAD,PRINT */}
           <aside className="col-span-1 md:flex flex-col items-center ">
-            <div
-              className={`flex items-center   w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105 mt-2 `}
-            >
-              <ShareCom  theme= {theme}/>
-            </div>
-
-            <div className={`flex items-center  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105  mt-2`}>
-              <button
-                className={`flex items-center py-3 px-4 xl:w-60 space-x-5  text-${
-                  theme === "dark" ? "white" : "slate-600"
+            <ShareCom theme={theme} /> {/*IMPORTED SHARE COMPONENT */}
+            {/* DOWNLOAD BUTTON*/}
+            <button
+              className={`flex items-center w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-4 py-4 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105  mt-2 py-3 px-4 xl:w-60 space-x-5  text-${theme === "dark" ? "white" : "slate-600"
                 } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none bg-${theme === "dark" ? "dark" : "white"}`}
-                onClick ={handlePrint}
-              >
-                <IoDownloadOutline />
-                <span className="md:hidden xl:block">Download</span>
-              </button>
-            </div>
-            <div className={`flex items-center  w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-1 py-2 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105 mt-2 `}>
-              <ReactToPrint
-                trigger={() => (
-                  <button
-                    onClick={handlePrint}
-                    className={`flex items-center py-3 px-4 xl:w-60 space-x-5 bg-${theme === "dark" ? "dark" : "white"} text-${theme === "dark" ? "white" : "slate-600"} rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none`}
-                  >
-                    <IoPrintOutline />
-                    <span className="md:hidden xl:block  ">Print</span>
-                  </button>
-                )}
-                content={() => componentRef.current}
-              />
-            </div>
+              onClick={handlePrint}
+            >
+              <IoDownloadOutline />
+              <span className=" xl:block">Download</span>
+            </button>
+            {/*PRINT BUTTON*/}
+            <ReactToPrint
+              trigger={() => (
+                <button
+                  onClick={handlePrint}
+                  className={`flex items-center w-[60vw] md:w-[10rem] xl:w-[15rem] md:m-5 mr-5 px-4 py-4 h-fit rounded-md border-2 sm:w-[83vw] sm:mx-5 hover:scale-105  mt-2 py-3 px-4 xl:w-60 space-x-5  text-${theme === "dark" ? "white" : "slate-600"
+                    } rounded-md shadow-lg  transition-all duration-100 hover:scale-105 border-2 sm:border-none bg-${theme === "dark" ? "dark" : "white"}`}
+                >
+                  <IoPrintOutline />
+                  <span className=" xl:block  ">Print</span>
+                </button>
+              )}
+              content={() => componentRef.current}
+            />
           </aside>
         </main>
       </section>

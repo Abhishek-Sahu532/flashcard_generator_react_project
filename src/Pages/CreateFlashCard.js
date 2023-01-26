@@ -4,13 +4,13 @@ import Schema from "../Components/InputSchema/Schema";
 import { nanoid } from "nanoid";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
-import { FaRegTimesCircle, FaTrash, FaEdit } from "react-icons/fa";
+import {  FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
 import {toast} from 'react-toastify'
 import "../App.css";
 
-const CreateFlashCard = ({ theme }) => {
+  const CreateFlashCard = ({ theme }) => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
@@ -19,12 +19,11 @@ const CreateFlashCard = ({ theme }) => {
   const [groupImg, setGroupImg] = useState("");
   const [cardImg, setCardImg] = useState([]);
 
-const addRef = (item)=>{
+  const addRef = (item)=>{
   if(item && !inputRef.current.includes(item)){
     inputRef.current.push(item)
   }
 }
-
 
   const addFlashCard = (values, actions) => {
     dispatch(setFlashCard(values));
@@ -34,13 +33,11 @@ const addRef = (item)=>{
     toast.success("Flashcard created successfully")
   };
 
-  const handleImage = (index) => {
+    const handleImage = (index) => {
     const values = Object.values(cardImg)
     const filter =  values.splice(index, 1)
     if(index > 0) setCardImg(values)
   }
-
- 
   return (
     //default value of the form input, will after being change as per user input
     <Formik
@@ -68,7 +65,7 @@ const addRef = (item)=>{
             theme === "dark" ? "white" : "slate-600"
           } font-medium `}
         >
-          {/* upper */}
+          {/* GROUP CREATION PART */}
           <div
             className={`flex flex-col px-10 py-4 bg-${
               theme === "dark" ? "dark" : "white"
@@ -81,6 +78,7 @@ const addRef = (item)=>{
                   Create Group
                   <sup className="font-medium text-xl text-red-700 ">*</sup>
                 </h2>
+                {/*FEATURE TO SHOW THE SELECTED GROUP IMAGE */}
                 {values.groupimg ? (
                   <div className="flex items-center space-x-3  my-5">
                     <div className="w-full min-w-[100px] min-h-[100px] bg-gray-200 max-w-[100px] max-h-[100px]  overflow-hidden  flex rounded-full shadow-md hover:ring-2 hover:-translate-y-1 transition-all ease-in-out duration-300 hover:ring-slate-500 hover:shadow-2xl">
@@ -90,7 +88,7 @@ const addRef = (item)=>{
                         alt=""
                       />
                     </div>
-                    {/* deleting the selected groupicon image  */}
+                    {/* ICON TO DELETE THE SELECTED IMAGE */}
                     <label
                       onClick={() => {
                         setFieldValue(`groupimg`, "");
@@ -103,21 +101,17 @@ const addRef = (item)=>{
                 ) : (
                   ""
                 )}
-
                 <Field
                   type="text"
                   name="groupname"
                   className={`border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-sm `}
                 />
-
                 <ErrorMessage
                   component={"div"}
                   className=" text-sm text-red-600"
                   name="groupname"
                 />
-              </div>
-              {/* right */}
-
+              </div>{/*BUTTON TO UPLOAD IMAGE FOR GROUP */}
               {groupImg ? (
                 ""
               ) : (
@@ -126,7 +120,7 @@ const addRef = (item)=>{
                   onClick={() => {
                     filePicker.current.click();
                   }}
-                  className={`px-5 py-2 mt-6 item-center bg-white border-2 border-slate-300 active:border-blue-600 text-blue-700 font-semibold rounded-md space-x-2 `}
+                  className={`px-5 py-2 mt-6 item-center md:ml-1.5 sm:ml-1.5 bg-white border-2 border-slate-300 active:border-blue-600 text-blue-700 font-semibold rounded-md space-x-2 `}
                 >
                   <UploadOutlined /> <span>Upload Image</span>
                   <input
@@ -149,7 +143,7 @@ const addRef = (item)=>{
               )}
             </div>
 
-            {/* down */}
+            {/* GROUP DESCRIPTION*/}
             <div className="flex flex-col w-full sm:w-[70%]">
               <h2 className="mb-2">Add Description</h2>
               <Field
@@ -167,7 +161,7 @@ const addRef = (item)=>{
             </div>
           </div>
 
-          {/* Add Cards Section  */}
+          {/* CARDS SECTION  */}
           <div className={`text-black drop-shadow-lg rounded-lg bg-${theme=== "dark"?'dark':'white'} border-2 p-5 rounded-md mt-4  overflow-hidden`} >
             {/* FieldArray component from Formik which will create Dynamic Form for the custom input */}
 
@@ -194,12 +188,13 @@ const addRef = (item)=>{
                                     *
                                   </sup>
                                 </h2>
+                                {/* INPUT FIELD TO CARDS TERM */}
                                 <Field
                                   type="text"
                                   name={`cards.${index}.cardname`}
                                   innerRef={addRef}
                                   autoFocus
-                                  className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72   bg-gray-50 border  text-gray-900 text-xl"
+                                  className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72 sm:w-64   w-44   bg-gray-50 border  text-gray-900 text-xl"
                                 />{" "}
                                 <ErrorMessage
                                   component={"div"}
@@ -214,10 +209,11 @@ const addRef = (item)=>{
                                     *
                                   </sup>
                                 </h2>
+                                {/*INPUT FIELD TO CARD DESCRIPTION */}
                                 <Field
                                   as="textarea"
                                   name={`cards.${index}.carddescription`}
-                                  className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
+                                  className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 sm:w-64 w-44 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
                                 />{" "}
                                 <ErrorMessage
                                   component={"div"}
@@ -231,7 +227,7 @@ const addRef = (item)=>{
 
                                 {cardImg && cardImg[index] ? (
                                   <div className="md:flex  space-x-4 space-y-4 my-6 ">
-                                    <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2 overflow-hidden  flex hover:border-slate-400 ">
+                                    <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2   flex hover:border-slate-400 ">
                                     
                                       <label className="mt-5">
                                         <img
@@ -241,12 +237,10 @@ const addRef = (item)=>{
                                         />
                                       </label>
                                     </div>
-                                  
                                   </div>
                                 ) : (
                                   ""
                                 )}
-
                                 {cardImg && cardImg[index] ? (
                                 ''
                               ) :  (
@@ -260,8 +254,6 @@ const addRef = (item)=>{
                                   >
                                     <PlusOutlined />
                                     <span>Select Image</span>
-
-
                                     <input
                                       type="file"
                                       name={`cards[${index}].cardimg`}
@@ -285,8 +277,6 @@ const addRef = (item)=>{
                                     />
                                   </button>
                                 )}
-                                  
-
                                 <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
                                   <button
                                     type="button"
@@ -310,7 +300,7 @@ const addRef = (item)=>{
                           </div>
                         ))
                       : null}
-
+{/* BUTTON TO CREATE SAME GROUP OF INPUTS */}
                     <button
                       type="button"
                       onClick={() =>
