@@ -7,7 +7,7 @@ import DemoPic from '../Images/mycardsPageDemo.svg'
 
 
 
-const MyCards = ({theme}) => {
+  const MyCards = ({theme}) => {
   const navigate = useNavigate();
   const flashcard = useSelector((state) => state.flashcard.flashcards);
   const [showAll, setShowAll] = useState(false);
@@ -51,6 +51,7 @@ const MyCards = ({theme}) => {
               </span>
               to Create New
             </h1>
+            {/* LINK TO GO TO HOME PAGE TO CREATE CARDS */}
           </div>
         )}
       </section>

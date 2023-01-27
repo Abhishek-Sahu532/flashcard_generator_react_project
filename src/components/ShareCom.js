@@ -3,7 +3,6 @@ import Facebook from "../Images/facebook-new.png";
 import Linkedin from "../Images/linkedin-circled.png";
 import Twitter from "../Images/twitter--v3.png";
 import WhatsApp from "../Images/whatsapp.png";
-// import {Button, Modal} from 'react-daisyui'
 import { IoMdClose } from "react-icons/io";
 import { BsShare } from "react-icons/bs";
 import { TbCopy } from "react-icons/tb";
@@ -48,12 +47,9 @@ const ShareCom = ({ theme }) => {
   function openModal() {
     setIsOpen(true);
   }
-
-
   function closeModal() {
     setIsOpen(false);
   }
-
   return (
     <>
       <button
