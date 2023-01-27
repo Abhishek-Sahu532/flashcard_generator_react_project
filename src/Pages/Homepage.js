@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Toggle from '../Components/Toggle';
+
+
 const Homepage = ({mode,toggleMode}) => {
   return (
     <>
@@ -11,8 +13,6 @@ const Homepage = ({mode,toggleMode}) => {
           </h1>
           <Toggle />
         </div>
-
-
         <div className="flex items-center space-x-10 mb-3">
           <button className="text-sm font-semibold text-red-600">
             <NavLink
