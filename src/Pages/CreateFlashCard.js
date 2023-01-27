@@ -4,13 +4,13 @@ import Schema from "../Components/InputSchema/Schema";
 import { nanoid } from "nanoid";
 import { PlusOutlined, UploadOutlined } from "@ant-design/icons";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/outline";
-import {  FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setFlashCard } from "../DataFromLocalStorage/ParentState";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import "../App.css";
 
-  const CreateFlashCard = ({ theme }) => {
+const CreateFlashCard = ({ theme }) => {
   const dispatch = useDispatch();
   const filePicker = useRef(null);
   const filePickerForCard = useRef(null);
@@ -19,11 +19,11 @@ import "../App.css";
   const [groupImg, setGroupImg] = useState("");
   const [cardImg, setCardImg] = useState([]);
 
-  const addRef = (item)=>{
-  if(item && !inputRef.current.includes(item)){
-    inputRef.current.push(item)
+  const addRef = (item) => {
+    if (item && !inputRef.current.includes(item)) {
+      inputRef.current.push(item)
+    }
   }
-}
 
   const addFlashCard = (values, actions) => {
     dispatch(setFlashCard(values));
@@ -33,10 +33,10 @@ import "../App.css";
     toast.success("Flashcard created successfully")
   };
 
-    const handleImage = (index) => {
+  const handleImage = (index) => {
     const values = Object.values(cardImg)
-    const filter =  values.splice(index, 1)
-    if(index > 0) setCardImg(values)
+    const filter = values.splice(index, 1)
+    if (index > 0) setCardImg(values)
   }
   return (
     //default value of the form input, will after being change as per user input
@@ -61,15 +61,13 @@ import "../App.css";
     >
       {({ values, isSubmitting, setFieldValue }) => (
         <Form
-          className={`w-full space-y-5 text-${
-            theme === "dark" ? "white" : "slate-600"
-          } font-medium `}
+          className={`w-full space-y-5 text-${theme === "dark" ? "white" : "slate-600"
+            } font-medium `}
         >
           {/* GROUP CREATION PART */}
           <div
-            className={`flex flex-col px-10 py-4 bg-${
-              theme === "dark" ? "dark" : "white"
-            } shadow-sm shadow-white space-y-4 rounded-md border-2 `}
+            className={`flex flex-col px-10 py-4 bg-${theme === "dark" ? "dark" : "white"
+              } shadow-sm shadow-white space-y-4 rounded-md border-2 `}
           >
             {/* LEFT */}
             <div className="flex flex-col sm:flex-row  lg:space-x-10 pt-3">
@@ -162,7 +160,7 @@ import "../App.css";
           </div>
 
           {/* CARDS SECTION  */}
-          <div className={`text-black drop-shadow-lg rounded-lg bg-${theme=== "dark"?'dark':'white'} border-2 p-5 rounded-md mt-4  overflow-hidden`} >
+          <div className={`text-black drop-shadow-lg rounded-lg bg-${theme === "dark" ? 'dark' : 'white'} border-2 p-5 rounded-md mt-4  overflow-hidden`} >
             {/* FieldArray component from Formik which will create Dynamic Form for the custom input */}
 
             <FieldArray name="cards">
@@ -172,135 +170,135 @@ import "../App.css";
                   <>
                     {cards && cards.length > 0
                       ? cards.map((card, index) => (
-                          <div
-                            className={`flex items-center space-x-10 border-2  px-5 lg:px-10 py-1 md:flex md:space-x-10 md:items-center relative flex-nowrap mb-2`}
-                            key={index}
-                          >
-                            <div className=" rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold">
-                              {index + 1}
+                        <div
+                          className={`flex items-center space-x-10 border-2  px-5 lg:px-10 py-1 md:flex md:space-x-10 md:items-center relative flex-nowrap mb-2`}
+                          key={index}
+                        >
+                          <div className=" rounded-full text-white p-2 w-9 h-9 flex items-center justify-center bg-red-600 text-white text-md font-semibold">
+                            {index + 1}
+                          </div>
+
+                          <div className="flex  flex-col md:space-x-9 md:flex-row ">
+                            <div className={`text-${theme === "dark" ? "white" : "black"} relative flex flex-col space-y-3 align-middle justify-center`}>
+                              <h2>
+                                Enter Term{" "}
+                                <sup className="font-medium text-xl text-red-700">
+                                  *
+                                </sup>
+                              </h2>
+                              {/* INPUT FIELD TO CARDS TERM */}
+                              <Field
+                                type="text"
+                                name={`cards.${index}.cardname`}
+                                innerRef={addRef}
+                                autoFocus
+                                className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72 sm:w-64   w-44   bg-gray-50 border  text-gray-900 text-xl"
+                              />{" "}
+                              <ErrorMessage
+                                component={"div"}
+                                className="text-sm text-red-500"
+                                name={`cards.${index}.cardname`}
+                              />
+                            </div>
+                            <div className={`text-${theme === "dark" ? "white" : "black"} relative flex flex-col justify-center space-y-4 align-middle`}>
+                              <h2>
+                                Enter Definition
+                                <sup className="font-medium text-xl text-red-700">
+                                  *
+                                </sup>
+                              </h2>
+                              {/*INPUT FIELD TO CARD DESCRIPTION */}
+                              <Field
+                                as="textarea"
+                                name={`cards.${index}.carddescription`}
+                                className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 sm:w-64 w-44 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
+                              />{" "}
+                              <ErrorMessage
+                                component={"div"}
+                                className="text-sm text-red-500"
+                                name={`cards.${index}.carddescription`}
+                              />
                             </div>
 
-                            <div className="flex  flex-col md:space-x-9 md:flex-row ">
-                              <div className={`text-${theme === "dark"?"white":"black"} relative flex flex-col space-y-3 align-middle justify-center`}>
-                                <h2>
-                                  Enter Term{" "}
-                                  <sup className="font-medium text-xl text-red-700">
-                                    *
-                                  </sup>
-                                </h2>
-                                {/* INPUT FIELD TO CARDS TERM */}
-                                <Field
-                                  type="text"
-                                  name={`cards.${index}.cardname`}
-                                  innerRef={addRef}
-                                  autoFocus
-                                  className="border-slate-400 h-11 rounded-md p-2 lg:w-72 md:w-72 sm:w-64   w-44   bg-gray-50 border  text-gray-900 text-xl"
-                                />{" "}
-                                <ErrorMessage
-                                  component={"div"}
-                                  className="text-sm text-red-500"
-                                  name={`cards.${index}.cardname`}
-                                />
-                              </div>
-                              <div className={`text-${theme === "dark"?"white":"black"} relative flex flex-col justify-center space-y-4 align-middle`}>
-                                <h2>
-                                  Enter Definition
-                                  <sup className="font-medium text-xl text-red-700">
-                                    *
-                                  </sup>
-                                </h2>
-                                {/*INPUT FIELD TO CARD DESCRIPTION */}
-                                <Field
-                                  as="textarea"
-                                  name={`cards.${index}.carddescription`}
-                                  className="resize-none  border-slate-400 h-11 rounded-md focus:h-24 p-2 lg:w-72 md:w-72 sm:w-64 w-44 transition-all ease-in-out bg-gray-50 border duration-500  text-gray-900 text-sm "
-                                />{" "}
-                                <ErrorMessage
-                                  component={"div"}
-                                  className="text-sm text-red-500"
-                                  name={`cards.${index}.carddescription`}
-                                />
-                              </div>
+                            <div className="flex items-center space-x-2  mt-8">
+                              {/* BUTTON TO SELECT THE IMAGE FOR CARDS */}
 
-                              <div className="flex items-center space-x-2  mt-8">
-                                {/* BUTTON TO SELECT THE IMAGE FOR CARDS */}
+                              {cardImg && cardImg[index] ? (
+                                <div className="md:flex  space-x-4 space-y-4 my-6 ">
+                                  <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2   flex hover:border-slate-400 ">
 
-                                {cardImg && cardImg[index] ? (
-                                  <div className="md:flex  space-x-4 space-y-4 my-6 ">
-                                    <div className="w-full relative min-w-[150px] min-h-[150px]  max-w-[200px] max-h-[150px] p-2   flex hover:border-slate-400 ">
-                                    
-                                      <label className="mt-5">
-                                        <img
-                                          src={values.cards[index].cardimg}
-                                          alt=""
-                                          className="w-28 h-28 object-contain"
-                                        />
-                                      </label>
-                                    </div>
+                                    <label className="mt-5">
+                                      <img
+                                        src={values.cards[index].cardimg}
+                                        alt=""
+                                        className="w-28 h-28 object-contain"
+                                      />
+                                    </label>
                                   </div>
-                                ) : (
-                                  ""
-                                )}
-                                {cardImg && cardImg[index] ? (
-                                ''
-                              ) :  (
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      filePickerForCard?.current?.click();
-                                    }}
-                                    name={`cards[${index}].cardimg`}
-                                    className={` px-1 py-1  bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-auto sm:w-72  `}
-                                  >
-                                    <PlusOutlined />
-                                    <span>Select Image</span>
-                                    <input
-                                      type="file"
-                                      name={`cards[${index}].cardimg`}
-                                      ref={filePickerForCard}
-                                      value={cardImg[index]}
-                                      onChange={(e) => {
-                                        const file1 = e.target.files[0];
-                                        const readerForCardImg = new FileReader();
-                                        readerForCardImg.readAsDataURL(file1);
-                                        readerForCardImg.onload = () => {
-                                          setFieldValue(`cards.${index}.cardimg`,
-                                            readerForCardImg.result
-                                            )
-                                          setCardImg((prev) => ({
-                                            ...prev,
-                                            [index]: readerForCardImg.result,
-                                          }))
-                                        };
-                                      }}
-                                      hidden
-                                    />
-                                  </button>
-                                )}
-                                <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                     if(index > 0) arrayHelper.remove(index); 
-                                      handleImage(index)
-                                    }
-                                    }
-                                  >
-                                    <TrashIcon className="h-6 text-slate-500" />
-                                  </button>
-                                  <button
-                                    type="button"
-                                    onClick={() => {inputRef.current[index].focus()}}
-                                  >
-                                    <PencilAltIcon className="h-6 text-blue-600" />
-                                  </button>
                                 </div>
+                              ) : (
+                                ""
+                              )}
+                              {cardImg && cardImg[index] ? (
+                                ''
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    filePickerForCard?.current?.click();
+                                  }}
+                                  name={`cards[${index}].cardimg`}
+                                  className={` px-1 py-1  bg-white border-2 border-blue-600 active:border-slate-300 text-blue-700 font-semibold rounded-md space-x-2 w-auto sm:w-72  `}
+                                >
+                                  <PlusOutlined />
+                                  <span>Select Image</span>
+                                  <input
+                                    type="file"
+                                    name={`cards[${index}].cardimg`}
+                                    ref={filePickerForCard}
+                                    value={cardImg[index]}
+                                    onChange={(e) => {
+                                      const file1 = e.target.files[0];
+                                      const readerForCardImg = new FileReader();
+                                      readerForCardImg.readAsDataURL(file1);
+                                      readerForCardImg.onload = () => {
+                                        setFieldValue(`cards.${index}.cardimg`,
+                                          readerForCardImg.result
+                                        )
+                                        setCardImg((prev) => ({
+                                          ...prev,
+                                          [index]: readerForCardImg.result,
+                                        }))
+                                      };
+                                    }}
+                                    hidden
+                                  />
+                                </button>
+                              )}
+                              <div className="flex  justify-around w-full md:flex-col md:space-y-5 md:mt-5">
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    if (index > 0) arrayHelper.remove(index);
+                                    handleImage(index)
+                                  }
+                                  }
+                                >
+                                  <TrashIcon className="h-6 text-slate-500" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => { inputRef.current[index].focus() }}
+                                >
+                                  <PencilAltIcon className="h-6 text-blue-600" />
+                                </button>
                               </div>
                             </div>
                           </div>
-                        ))
+                        </div>
+                      ))
                       : null}
-{/* BUTTON TO CREATE SAME GROUP OF INPUTS */}
+                    {/* BUTTON TO CREATE SAME GROUP OF INPUTS */}
                     <button
                       type="button"
                       onClick={() =>
@@ -312,7 +310,7 @@ import "../App.css";
                           cardimg: null,
                         })
                       }
-                      className={`flex items-center space-x-2 text-blue-600 font-medium text-sm bg-${theme === "dark"?"dark":"white"} mb-5 px-5 py-2 w-30`}
+                      className={`flex items-center space-x-2 text-blue-600 font-medium text-sm bg-${theme === "dark" ? "dark" : "white"} mb-5 px-5 py-2 w-30`}
                     >
                       <PlusOutlined />
                       <span>Add More</span>
